@@ -390,7 +390,7 @@ main {
 
 /* PRINT SETTINGS */
 @media print {
-    .terminal-bar, .tabs, .cursor-line, #background-canvas, .terminal-footer, body::after { 
+    .terminal-bar, .tabs, .cursor-line, #background-canvas, .terminal-footer, body::after, .contact-icons { 
         display: none !important; 
     }
     
