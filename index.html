@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eugen Rof | CV</title>
+    <meta name="description" content="Senior QA Engineer | Scrum Master | Terminal-style CV">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <canvas id="background-canvas"></canvas>
+
+    <div class="container">
+        <div class="terminal-bar">
+            <div class="terminal-controls">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <span class="terminal-bar-title">Curriculum Vitae</span>
+            <div class="terminal-actions">
+                <button onclick="window.print()" class="terminal-toggle">🖨️ Export PDF</button>
+                <button id="theme-toggle" class="terminal-toggle" aria-label="Toggle theme">☀︎ Light Theme</button>
+            </div>
+        </div>
+
+        <header>
+            <div class="profile-container">
+                <a href="https://www.linkedin.com/in/eugen-andrei-rof-a165606a/" target="_blank"
+                    class="profile-link clean-link">
+                    <img src="images/profile.png" class="profile-photo">
+                </a>
+            </div>
+            <h1>Eugen-Andrei Rof</h1>
+            <p class="subtitle">Senior QA Engineer | Scrum Master</p>
+            <div class="contact-icons">
+                <a href="mailto:eugenrof@gmail.com" title="Gmail" class="clean-link"><img src="images/gmail.png"
+                        alt="Email"></a>
+                <a href="https://www.linkedin.com/in/eugen-andrei-rof-a165606a/" target="_blank" title="LinkedIn"
+                    class="clean-link"><img src="images/linkedin.svg" alt="LinkedIn"></a>
+                <a href="https://github.com/eugenrof" target="_blank" title="GitHub" class="clean-link">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub"
+                        class="header-icon">
+                </a>
+                <a href="https://www.credly.com/badges/7af87a6f-3e5f-476c-99d3-396775f50736" target="_blank"
+                    title="Scrum.org" class="clean-link"><img src="images/psm.png" alt="Scrum.org"></a>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" onclick="openTab('about',this)">about</button>
+            <button class="tab" onclick="openTab('experience',this)">experience</button>
+            <button class="tab" onclick="openTab('projects',this)">projects</button>
+            <button class="tab" onclick="openTab('skills',this)">skills</button>
+            <button class="tab" onclick="openTab('education',this)">education</button>
+            <button class="tab" onclick="openTab('certifications',this)">certifications</button>
+        </nav>
+
+        <main id="terminal-window">
+            <section id="about" class="tab-content active">
+                <h2 class="command-line">$ cat about.md | ABOUT</h2>
+                <div class="typing-container">
+                    <p class="typewriter" style="--delay: 0s">
+                        > <strong>Pragmatic Quality Assurance:</strong> 14 years of experience delivering software by
+                        balancing automated regression with exploratory testing to uncover hidden risks and provide
+                        stakeholders with a clear, honest picture of release readiness.
+                    </p>
+                    <p class="typewriter" style="--delay: 1s">
+                        > <strong>Sustainable Quality Engineering:</strong> Engineered robust automation frameworks
+                        prioritized by risk-weighted coverage; reduced production regressions by optimizing <em>Cypress,
+                            Playwright, and WebdriverIO</em> suites for reliability and rapid feedback rather than
+                        script volume.
+                    </p>
+                    <p class="typewriter" style="--delay: 2s">
+                        > <strong>Agile Facilitation:</strong> As <em>Scrum Master</em>, I focus on streamlining
+                        delivery cycles by refining requirements, removing technical impediments, and facilitating clear
+                        communication to ensure consistent sprint velocity and high-quality output.
+                    </p>
+                </div>
+
+                <h2 class="command-line" style="margin-top: 40px;">$ cat interests_metadata.txt</h2>
+                <div class="tags">
+                    <span class="tag">Software Testing</span><span class="tag">Web Development</span><span
+                        class="tag">Video Games Design</span><span class="tag">Cycling</span><span
+                        class="tag">Chess</span><span class="tag">Photo Editing</span><span class="tag">Live
+                        Concerts</span>
+                </div>
+            </section>
+
+            <section id="experience" class="tab-content">
+                <h2 class="command-line">$ cat experience.log</h2>
+                <div class="card">
+                    <h3>Senior QA Engineer | Scrum Master <span class="date">Mar 2022 – Present</span></h3>
+                    <p class="company">QCatalyst Romania</p>
+                    <ul>
+                        <li><strong>QA Strategy:</strong> Orchestrating end-to-end testing for National Geographic
+                            Society projects, ensuring high-quality content delivery via <strong>Sanity.io</strong>
+                            through a blend of automation and exploratory testing.</li>
+                        <li><strong>Automation Leadership:</strong> Developed robust e2e frameworks using
+                            <strong>Cypress + TypeScript</strong> and integrated them into <strong>GitLab CI/CD</strong>
+                            pipelines.</li>
+                        <li><strong>Tooling & Observability:</strong> Creating POCs for performance, test management and monitoring tools, such as <strong>TestRail CLI, JMeter, and Grafana k6</strong>.</li>
+                        <li><strong>Agile Facilitation:</strong> Acting as PSM I Scrum Master; leading ceremonies,
+                            fostering cross-functional collaboration, and implementing Agile best practices.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Senior Test Engineer <span class="date">Nov 2014 – Mar 2022</span></h3>
+                    <p class="company">Endava Romania</p>
+                    <ul>
+                        <li><strong>Automation:</strong> Engineered BDD testing suites with <strong>Selenium + Python (Behave)</strong> for digital media platforms.</li>
+                        <li><strong>Domain Expertise:</strong> Specialized in embedded and OTT testing for <strong>IPTV, Android TV, and Fire TV</strong> ecosystems.</li>
+                        <li><strong>Test Management:</strong> Spearheaded QA lifecycles using <strong>Xray and HPQC</strong>, coordinating defect management within Jira for enterprise-scale projects.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>QA Engineer <span class="date">Dec 2013 – Nov 2014</span></h3>
+                    <p class="company">Gama Software</p>
+                    <ul>
+                        <li>Cross-platform web and mobile testing for diverse tech stacks (ColdFusion, .NET, PHP).</li>
+                        <li>Authored comprehensive test plans, scenarios, and technical documentation for client demos.</li>
+                        <li>Managed end-to-end quality cycles for specialized medical education portals, ensuring data integrity and platform reliability for a network of leading Canadian Medical Universities.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>QA Test Analyst <span class="date">Jan 2012 – Dec 2013</span></h3>
+                    <p class="company">Quantic Lab</p>
+                    <ul>
+                        <li>Executed functional, compliance, and compatibility testing for diverse titles across web, mobile, and console platforms.</li>
+                        <li>Stepped into the <strong>Lead Tester</strong> role for a specialized PC project, managing a team of junior analysts to ensure stability across varying hardware configurations and OS environments.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="projects" class="tab-content">
+                <h2 class="command-line">$ ls -R industry_portfolios/</h2>
+                <div class="skills-grid">
+                    <div class="card">
+                        <h3>FinTech & Insurance</h3>
+                        <p class="domain-desc">Validated <strong>next-gen payment pages</strong> for a high-traffic
+                            payment processing gateway, ensuring secure transaction flows, PCI compliance, and seamless
+                            API integration for enterprise-level finance systems.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Non-Profit & Science</h3>
+                        <p class="domain-desc">
+                            Spearheading the QA lifecycle for the <strong>National Geographic Society</strong>, focusing
+                            on scalable automation and validating complex content delivery via
+                            <strong>Sanity.io</strong> to support premium digital storytelling experiences.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Educational & Medicine</h3>
+                        <p class="domain-desc">Managed end-to-end quality cycles for specialized <strong>medical
+                                education portals</strong>, ensuring data integrity and platform reliability for a
+                            network of leading <strong>Canadian Medical Universities</strong>.</p>
+                    </div>
+                    <div class="card">
+                        <h3>IPTV & Telecom</h3>
+                        <p class="domain-desc">Used Witbe Workbench to automate real-device testing for IPTV and OTT
+                            devices, validating hardware responsiveness, zapping, channel recordings, VODs and stream
+                            stability.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Gaming Ecosystems</h3>
+                        <p class="domain-desc">Multi-platform testing across: <strong>Nintendo, PlayStation (PSP, PS3,
+                                PS4), Xbox 360/One, PC (Win/Linux/macOS)</strong>, and mobile (iOS/Android).</p>
+                    </div>
+                    <div class="card">
+                        <h3>Media</h3>
+                        <p class="domain-desc">Extensive testing for high-traffic OTT platforms. Specialized in
+                            streaming stability and UI performance across <strong>Android TV, Fire TV, and IPTV</strong>
+                            hardware.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="tab-content">
+                <h2 class="command-line">$ ls -R technical_core/</h2>
+                <div class="skills-grid">
+                    <div class="card">
+                        <h3>Tracking & Management</h3>
+                        <div class="tags">
+                            <span class="tag">Jira</span>
+                            <span class="tag">Bugzilla</span>
+                            <span class="tag">Mantis</span>
+                            <span class="tag">ElemenTool</span>
+                            <span class="tag">Redmine</span>
+                            <span class="tag">TestRail</span>
+                            <span class="tag">Qase</span>
+                            <span class="tag">Xray</span>
+                            <span class="tag">Jira</span>
+                            <span class="tag">Confluence</span>
+                            <span class="tag">Bitbucket</span>
+                            <span class="tag">Test Link</span>
+                            <span class="tag">HPQC</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Automation & Coding</h3>
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">WebdriverIO</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Angular</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">PyTest</span>
+                            <span class="tag">Cypress</span>
+                            <span class="tag">Playwright</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">Selenium WebDriver</span>
+                            <span class="tag">Appium</span>
+                            <span class="tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Performance & API</h3>
+                        <div class="tags">
+                            <span class="tag">Postman</span><span class="tag">SOAP/REST</span><span class="tag">Grafana
+                                K6</span><span class="tag">JMeter</span><span class="tag">Google Lighthouse</span><span
+                                class="tag">Datadog</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>DevOps & Infrastructure</h3>
+                        <div class="tags">
+                            <span class="tag">Git</span>
+                            <span class="tag">GitLab</span>
+                            <span class="tag">GitHub Actions</span>
+                            <span class="tag">Jenkins</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Linux</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>UX Design Tools</h3>
+                        <div class="tags">
+                            <span class="tag">Figma</span>
+                            <span class="tag">Miro</span>
+                            <span class="tag">FigJam</span>
+                            <span class="tag">Lucidchart</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Operating Systems</h3>
+                        <div class="tags">
+                            <span class="tag">Windows</span>
+                            <span class="tag">MacOS</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">Android OS</span>
+                            <span class="tag">iOS/iPadOS</span>
+                            <span class="tag">Raspberry Pi OS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="command-line" style="margin-top: 30px;">$ ls -R agile_soft_skills/</h2>
+                <div class="skills-grid">
+                    <div class="card">
+                        <h3>Work Methodologies</h3>
+                        <div class="tags">
+                            <span class="tag">Scrum</span><span class="tag">Kanban</span><span
+                                class="tag">SAFe</span><span class="tag">Waterfall</span><span class="tag">Agile
+                                Coaching</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Interpersonal</h3>
+                        <div class="tags">
+                            <span class="tag">Collaboration</span><span class="tag">Active Listening</span><span
+                                class="tag">Adaptability</span><span class="tag">Time Management</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Languages</h3>
+                        <ul class="lang-list">
+                            <li>EN: ● ● ● ● ●</li>
+                            <li>FR: ● ● ○ ○ ○</li>
+                            <li>DE: ● ○ ○ ○ ○</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="tab-content">
+                <h2 class="command-line">$ cat education.txt</h2>
+                <button class="accordion">MSc – Applied Informatics (2012–2014)</button>
+                <div class="accordion-content">
+                    <p>🏛️ Technical University of Cluj-Napoca</p>
+                    <h5>🧑‍🎓 Faculty of Computer Science and Automation</h5>
+                </div>
+                <button class="accordion">BSc – Economic Informatics (2012–2015)</button>
+                <div class="accordion-content">
+                    <p>🏛️ Babeș-Bolyai University of Cluj-Napoca</p>
+                    <h5>🧑‍🎓 Faculty of Economics and Business Administration (FSEGA)</h5>
+                </div>
+                <button class="accordion">BSc – Information Sciences (2009–2012)</button>
+                <div class="accordion-content">
+                    <p>🏛️ Babeș-Bolyai University of Cluj-Napoca</p>
+                    <h5>🧑‍🎓 Faculty of History and Philosophy</h5>
+                </div>
+            </section>
+
+            <section id="certifications" class="tab-content">
+                <h2 class="command-line">$ ls certifications/</h2>
+                <article class="card">
+                    <h3>Scrum.org</h3>
+                    <ul>
+                        <li><a href="https://www.credly.com/badges/7af87a6f-3e5f-476c-99d3-396775f50736" target="_blank"
+                                rel="noopener noreferrer">Professional Scrum Master I (PSM I)</a></li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>International Software Test Institute</h3>
+                    <ul>
+                        <li><a href="https://www.test-institute.org/badges/33089003345929" target="_blank"
+                                rel="noopener noreferrer">Software Tester Certification (ASTC™)</a></li>
+                        <li><a href="https://www.test-institute.org/badges/69295000915415" target="_blank"
+                                rel="noopener noreferrer">Software Test Manager Certification (ASTMC™)</a>
+                        </li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>International Scrum Institute</h3>
+                    <ul>
+                        <li><a href="https://www.scrum-institute.org/badges/01852423509582" target="_blank"
+                                rel="noopener noreferrer">Scrum Master Accredited Certification™</a></li>
+                        <li><a href="https://www.scrum-institute.org/badges/26374834686052" target="_blank"
+                                rel="noopener noreferrer">Scrum Product Owner Accredited Certification™</a></li>
+                    </ul>
+                </article>
+            </section>
+
+            <div class="cursor-line"><span>$</span> <span class="blink">█</span></div>
+        </main>
+    </div>
+
+    <footer class="terminal-footer">
+        <div class="footer-content">
+            <div class="status-group">
+                <span class="status-item"><span class="status-dot"></span> System: Online</span>
+                <span class="status-item">🌐 Cluj-Napoca, RO</span>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Eugen Rof | <span class="footer-version"
+                    title="Semantic Versioning: Major.Minor.Patch">v2.1.0</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/eugenrof" target="_blank">Source</a>
+                <a href="mailto:eugenrof@gmail.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
