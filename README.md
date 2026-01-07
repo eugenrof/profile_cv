@@ -30,5 +30,5 @@ This portfolio is engineered to reflect a developer's environment, featuring a c
 ├── index.html          # Main entry point and semantic structure
 ├── style.css           # Custom glassmorphism and terminal styling
 ├── script.js           # Tab logic, theme switching, and canvas animations
-├── icons/              # Image assets for certifications and social links
+├── images/             # Image assets for certifications and social links
 └── README.md           # Documentation
