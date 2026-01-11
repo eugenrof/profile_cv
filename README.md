@@ -2,7 +2,7 @@
 
 [![GitHub Pages](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=github)](https://eugenrof.github.io/profile_cv/)
 
-A high-performance, responsive, terminal-themed Curriculum Vitae built with a "code-first" aesthetic.
+A high-performance, responsive, terminal-themed Curriculum Vitae, built with a "code-first" aesthetic.
 
 ## 🚀 Overview
 
