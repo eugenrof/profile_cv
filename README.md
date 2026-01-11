@@ -1,8 +1,6 @@
 # Curriculum Vitae | Eugen Rof
 
 [![GitHub Pages](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=github)](https://eugenrof.github.io/profile_cv/)
-[![Version](https://img.shields.io/badge/version-2.1.0-blue?style=for-the-badge)](https://github.com/eugenrof)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 A high-performance, responsive, terminal-themed Curriculum Vitae built with a "code-first" aesthetic.
 
