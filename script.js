@@ -1,4 +1,9 @@
 /**
+ * Tab and Navigation Configuration
+ */
+const tabOrder = ['about', 'experience', 'projects', 'skills', 'education', 'certifications'];
+
+/**
  * Tab Switching Logic
  */
 function resetAccordions() {
@@ -7,6 +12,34 @@ function resetAccordions() {
         const panel = acc.nextElementSibling;
         if (panel) panel.style.maxHeight = null;
     });
+}
+
+function updateNavButtons(currentIndex) {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (prevBtn && nextBtn) {
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === tabOrder.length - 1;
+    }
+}
+
+function navigateTab(direction) {
+    const activeTabButton = document.querySelector('.tab.active');
+    // Fallback to 'about' if no active tab is found
+    const currentId = activeTabButton ? activeTabButton.getAttribute('data-tab') : 'about';
+    let currentIndex = tabOrder.indexOf(currentId);
+    
+    let nextIndex = currentIndex + direction;
+    
+    if (nextIndex >= 0 && nextIndex < tabOrder.length) {
+        const nextTabId = tabOrder[nextIndex];
+        const nextTabButton = document.querySelector(`[data-tab="${nextTabId}"]`);
+        openTab(nextTabId, nextTabButton);
+        
+        // Scroll smoothly to the top of the terminal container
+        document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 function openTab(id, el) {
@@ -22,11 +55,36 @@ function openTab(id, el) {
         
         const targetSection = document.getElementById(id);
         if (targetSection) targetSection.classList.add('active');
-        if (el) el.classList.add('active');
+        
+        // If el is not provided (e.g., called via pagination), find the button
+        const btn = el || document.querySelector(`[data-tab="${id}"]`);
+        if (btn) btn.classList.add('active');
+        
+        // Update pagination buttons state
+        updateNavButtons(tabOrder.indexOf(id));
         
         main.style.opacity = '1';
         main.style.transform = 'translateY(0)'; 
     }, 200);
+}
+
+/**
+ * Back to Top Button Logic
+ */
+const bttBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        bttBtn.style.display = "block";
+    } else {
+        bttBtn.style.display = "none";
+    }
+});
+
+if (bttBtn) {
+    bttBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
 
 /**
@@ -109,3 +167,8 @@ function drawNetwork() {
     requestAnimationFrame(drawNetwork);
 }
 drawNetwork();
+
+// Initialize the navigation buttons state on page load
+document.addEventListener('DOMContentLoaded', () => {
+    updateNavButtons(0); // Start at 'about' (index 0)
+});
