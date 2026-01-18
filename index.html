@@ -36,7 +36,7 @@
             <div class="profile-container">
                 <a href="https://www.linkedin.com/in/eugen-andrei-rof-a165606a/" target="_blank"
                     class="profile-link clean-link">
-                    <img src="images/profile.png" class="profile-photo">
+                    <img src="images/profile.png" class="profile-photo" alt="Eugen Rof">
                 </a>
             </div>
             <h1>Eugen-Andrei Rof</h1>
@@ -55,13 +55,13 @@
             </div>
         </header>
 
-        <nav class="tabs">
-            <button class="tab active" onclick="openTab('about',this)">about</button>
-            <button class="tab" onclick="openTab('experience',this)">experience</button>
-            <button class="tab" onclick="openTab('projects',this)">projects</button>
-            <button class="tab" onclick="openTab('skills',this)">skills</button>
-            <button class="tab" onclick="openTab('education',this)">education</button>
-            <button class="tab" onclick="openTab('certifications',this)">certifications</button>
+        <nav class="tabs" id="main-nav">
+            <button class="tab active" data-tab="about" onclick="openTab('about',this)">about</button>
+            <button class="tab" data-tab="experience" onclick="openTab('experience',this)">experience</button>
+            <button class="tab" data-tab="projects" onclick="openTab('projects',this)">projects</button>
+            <button class="tab" data-tab="skills" onclick="openTab('skills',this)">skills</button>
+            <button class="tab" data-tab="education" onclick="openTab('education',this)">education</button>
+            <button class="tab" data-tab="certifications" onclick="openTab('certifications',this)">certifications</button>
         </nav>
 
         <main id="terminal-window">
@@ -305,7 +305,7 @@
                 <button class="accordion">BSc – Business Informatics (2012–2015)</button>
                 <div class="accordion-content">
                     <p>🏛️ Babeș-Bolyai University of Cluj-Napoca</p>
-                    <h5>🧑‍🎓 Faculty of Economics and Business Administration (FSEGA)</h5>
+                    <h5>🧑‍🎓 Faculty of Economics and Business Administration</h5>
                 </div>
                 <button class="accordion">BSc – Information Sciences (2009–2012)</button>
                 <div class="accordion-content">
@@ -344,9 +344,16 @@
                 </article>
             </section>
 
+            <div class="section-nav">
+                <button id="prevBtn" class="nav-btn" onclick="navigateTab(-1)">← PREV</button>
+                <button id="nextBtn" class="nav-btn" onclick="navigateTab(1)">NEXT →</button>
+            </div>
+
             <div class="cursor-line"><span>$</span> <span class="blink">█</span></div>
         </main>
     </div>
+
+    <button id="backToTop" title="Go to top">↑</button>
 
     <footer class="terminal-footer">
         <div class="footer-content">
