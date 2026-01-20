@@ -167,7 +167,7 @@ header {
 .header-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Stacks name, subtitle, and icons on the left */
+    align-items: flex-start;
     text-align: left;
 }
 
@@ -176,9 +176,17 @@ header h1 {
     font-size: 2.2em;
 }
 
+/* Stacking titles with tight line spacing */
 .subtitle {
-    margin: 5px 0 15px 0;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0 12px 0;
+    line-height: 1.4;
     font-weight: 400;
+}
+
+.subtitle span {
+    display: block;
 }
 
 .profile-photo {
@@ -472,18 +480,18 @@ body.light .nav-btn:disabled {
 #backToTop:hover {
     transform: translateY(-5px);
     background-color: var(--accent-color);
-    color: #ffffff !important; /* Arrow turns white in dark mode */
+    color: #ffffff !important; 
 }
 
 body.light #backToTop {
     background-color: #ffffff;
     border: 1px solid #ced4da;
-    color: var(--accent-color); /* Arrow is blue in light mode default */
+    color: var(--accent-color); 
 }
 
 body.light #backToTop:hover {
     background-color: var(--accent-color);
-    color: #ffffff !important; /* Arrow turns white in light mode hover */
+    color: #ffffff !important; 
     border-color: var(--accent-color);
 }
 
@@ -493,20 +501,32 @@ body.light #backToTop:hover {
     .copyright { grid-column: 1 / span 2; order: 3; }
 }
 
+/* MOBILE RESPONSIVENESS */
 @media (max-width: 600px) {
     .container { margin: 10px; border-radius: 8px; }
+    
     header { 
         padding: 20px 10px; 
         flex-direction: column; 
         text-align: center;
         gap: 15px;
     }
+
     .header-info {
-        align-items: center; /* Center stacks details on mobile */
+        align-items: center; /* Centers the H1 and the Subtitle container */
     }
+
+    .subtitle {
+        align-items: center; /* Ensures the spans inside are centered relative to each other */
+        text-align: center;
+        margin: 5px 0 15px 0;
+    }
+
     .contact-icons {
         justify-content: center;
+        margin-top: 10px;
     }
+
     header h1 { font-size: 1.6em; }
     .terminal-bar-title { display: none; }
     .date { float: none; display: block; margin-top: 5px; }
