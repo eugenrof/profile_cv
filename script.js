@@ -26,7 +26,6 @@ function updateNavButtons(currentIndex) {
 
 function navigateTab(direction) {
     const activeTabButton = document.querySelector('.tab.active');
-    // Fallback to 'about' if no active tab is found
     const currentId = activeTabButton ? activeTabButton.getAttribute('data-tab') : 'about';
     let currentIndex = tabOrder.indexOf(currentId);
     
@@ -37,7 +36,6 @@ function navigateTab(direction) {
         const nextTabButton = document.querySelector(`[data-tab="${nextTabId}"]`);
         openTab(nextTabId, nextTabButton);
         
-        // Scroll smoothly to the top of the terminal container
         document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
     }
 }
@@ -56,11 +54,9 @@ function openTab(id, el) {
         const targetSection = document.getElementById(id);
         if (targetSection) targetSection.classList.add('active');
         
-        // If el is not provided (e.g., called via pagination), find the button
         const btn = el || document.querySelector(`[data-tab="${id}"]`);
         if (btn) btn.classList.add('active');
         
-        // Update pagination buttons state
         updateNavButtons(tabOrder.indexOf(id));
         
         main.style.opacity = '1';
@@ -75,9 +71,9 @@ const bttBtn = document.getElementById("backToTop");
 
 window.addEventListener("scroll", () => {
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        bttBtn.style.display = "block";
+        if (bttBtn) bttBtn.style.display = "block";
     } else {
-        bttBtn.style.display = "none";
+        if (bttBtn) bttBtn.style.display = "none";
     }
 });
 
@@ -99,13 +95,39 @@ document.querySelectorAll(".accordion").forEach(acc => {
 });
 
 /**
- * Theme Toggle
+ * Theme Toggle with Persistence (LocalStorage)
  */
 const toggle = document.getElementById("theme-toggle");
+
+// Funcție pentru actualizarea UI-ului (textul butonului)
+function updateThemeUI() {
+    if (toggle) {
+        const isLight = document.body.classList.contains("light");
+        toggle.textContent = isLight ? "☾ Dark Theme" : "☀︎ Light Theme";
+    }
+}
+
+// Verificăm tema salvată imediat ce se încarcă scriptul
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "light") {
+    document.body.classList.add("light");
+} else {
+    document.body.classList.remove("light");
+}
+updateThemeUI();
+
 if (toggle) {
     toggle.addEventListener("click", () => {
-        document.body.classList.toggle("light");
-        toggle.textContent = document.body.classList.contains("light") ? "☾ Dark Theme" : "☀︎ Light Theme";
+        const isNowLight = document.body.classList.toggle("light");
+        
+        // Salvăm alegerea utilizatorului
+        if (isNowLight) {
+            localStorage.setItem("theme", "light");
+        } else {
+            localStorage.setItem("theme", "dark");
+        }
+        
+        updateThemeUI();
     });
 }
 
@@ -139,6 +161,7 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+        // Culorile particulelor se adaptează la tema curentă
         ctx.fillStyle = document.body.classList.contains('light') ? 'rgba(58, 134, 255, 0.2)' : 'rgba(76, 201, 240, 0.4)';
         ctx.fill();
     }
@@ -156,6 +179,7 @@ function drawNetwork() {
             let dist = Math.sqrt(dx*dx + dy*dy);
             if(dist < 120){
                 ctx.beginPath();
+                // Culorile liniilor se adaptează la tema curentă
                 ctx.strokeStyle = document.body.classList.contains('light') ? 'rgba(58,134,255,'+ (0.15 - dist/400) +')' : 'rgba(58,134,255,'+ (0.3 - dist/400) +')';
                 ctx.lineWidth = 1;
                 ctx.moveTo(particles[i].x, particles[i].y);
