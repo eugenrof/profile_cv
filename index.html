@@ -28,8 +28,8 @@
             </div>
             <span class="terminal-bar-title">Curriculum Vitae</span>
             <div class="terminal-actions">
-                <button onclick="window.print()" class="terminal-toggle">🖨️ Download PDF</button>
-                <button id="theme-toggle" class="terminal-toggle" aria-label="Toggle theme">☀︎ Light Theme</button>
+                <a href="images/CV_EugenRof.pdf" target="_blank" class="terminal-toggle">🖨️ Open PDF</a>
+                <button id="theme-toggle" class="terminal-toggle" aria-label="Toggle Theme">☀︎ Light Theme</button>
             </div>
         </div>
 
@@ -303,20 +303,28 @@
 
             <section id="education" class="tab-content">
                 <h2 class="command-line">$ cat education.txt</h2>
-                <button class="accordion">MSc – Applied Informatics (2012–2014)</button>
-                <div class="accordion-content">
-                    <p>🏛️ Technical University of Cluj-Napoca</p>
-                    <h5>🧑‍🎓 Faculty of Computer Science and Automation</h5>
-                </div>
-                <button class="accordion">BSc – Business Informatics (2012–2015)</button>
-                <div class="accordion-content">
-                    <p>🏛️ Babeș-Bolyai University of Cluj-Napoca</p>
-                    <h5>🧑‍🎓 Faculty of Economics and Business Administration</h5>
-                </div>
-                <button class="accordion">BSc – Information Sciences (2009–2012)</button>
-                <div class="accordion-content">
-                    <p>🏛️ Babeș-Bolyai University of Cluj-Napoca</p>
-                    <h5>🧑‍🎓 Faculty of History and Philosophy</h5>
+                
+                <div class="education-list">
+                    <article class="card">
+                        <span class="date">2012–2014</span>
+                        <h3>MSc – Applied Informatics</h3>
+                        <p class="company">🏛️ Technical University of Cluj-Napoca</p>
+                        <p class="domain-desc">🧑‍🎓 Faculty of Computer Science and Automation</p>
+                    </article>
+
+                    <article class="card">
+                        <span class="date">2012–2015</span>
+                        <h3>BSc – Business Informatics</h3>
+                        <p class="company">🏛️ Babeș-Bolyai University of Cluj-Napoca</p>
+                        <p class="domain-desc">🧑‍🎓 Faculty of Economics and Business Administration</p>
+                    </article>
+
+                    <article class="card">
+                        <span class="date">2009–2012</span>
+                        <h3>BSc – Information Sciences</h3>
+                        <p class="company">🏛️ Babeș-Bolyai University of Cluj-Napoca</p>
+                        <p class="domain-desc">🧑‍🎓 Faculty of History and Philosophy</p>
+                    </article>
                 </div>
             </section>
 
@@ -325,10 +333,10 @@
                 <article class="card">
                     <h3>Scrum.org</h3>
                     <ul>
-                        <li><a href="https://www.credly.com/badges/2afb27dd-ee9b-458d-ae82-39fb808621ad" target="_blank"
-                                rel="noopener noreferrer">Professional Scrum Master™ II (PSM II)</a></li>
                         <li><a href="https://www.credly.com/badges/7af87a6f-3e5f-476c-99d3-396775f50736" target="_blank"
                                 rel="noopener noreferrer">Professional Scrum Master™ I (PSM I)</a></li>
+                        <li><a href="https://www.credly.com/badges/2afb27dd-ee9b-458d-ae82-39fb808621ad" target="_blank"
+                                rel="noopener noreferrer">Professional Scrum Master™ II (PSM II)</a></li>
                     </ul>
                 </article>
                 <article class="card">
@@ -367,8 +375,8 @@
     <footer class="terminal-footer">
         <div class="footer-content">
             <div class="status-group">
-                <span class="status-item"><span class="status-dot"></span> System: Online</span>
-                <span class="status-item">🌐 Cluj-Napoca, RO</span>
+                <span class="status-item"><span class="status-dot"></span> SYSTEM: ONLINE</span>
+                <span class="status-item">🌐 CLUJ-NAPOCA, RO</span>
             </div>
             <div class="copyright">
                 &copy; 2026 | Eugen Rof
