@@ -132,10 +132,10 @@ body::after {
     padding: 0 15px;
     gap: 8px;
     
-    /* RESET LINK DEFAULTS */
+    /* RESET LINK DEFAULTS (Fixed Bold/Black issue) */
     text-decoration: none !important;
-    border-bottom: none !important; /* Removes the dashed line from line 56 */
-    font-weight: 400 !important;    /* Forces it to not be bold like other links */
+    border-bottom: none !important; 
+    font-weight: 400 !important;    
     
     /* COLORS & FONT */
     background: var(--btn-bg);
@@ -155,7 +155,7 @@ body::after {
     background: var(--accent-color);
     color: #ffffff !important;
     border-color: var(--accent-color);
-    border-bottom: none !important; /* Ensures no line appears on hover */
+    border-bottom: none !important;
 }
 
 /* HEADER */
@@ -182,12 +182,12 @@ header h1 { margin: 0; font-size: 2.2em; }
     object-fit: cover; 
     transition: 0.4s;
 }
-.profile-photo:hover { transform: scale(1.25); box-shadow: 0 0 30px rgba(58, 134, 255, 0.5); }
+.profile-photo:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(58, 134, 255, 0.5); }
 
 /* CONTACT ICONS */
 .contact-icons { display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin-top: 5px; }
 .contact-icons img { width: 24px; height: 24px; transition: transform 0.2s ease; }
-.contact-icons img:hover { transform: scale(2.0) rotate(5deg); }
+.contact-icons img:hover { transform: scale(1.5) rotate(5deg); }
 
 /* TABS */
 .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; padding: 20px; }
@@ -231,7 +231,7 @@ main { padding: 30px; min-height: 450px; transition: opacity 0.3s ease, transfor
 #pdf-viewer-container {
     width: 100%;
     margin-top: 10px;
-    display: none; /* Hidden by default, shown by JS */
+    display: none; 
 }
 
 #pdf-viewer-container iframe {
@@ -241,7 +241,7 @@ main { padding: 30px; min-height: 450px; transition: opacity 0.3s ease, transfor
     border: 1px solid var(--border-color);
 }
 
-/* CARDS - FIXED FOR DATE FLOATING */
+/* CARDS */
 .card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(5px);
@@ -338,13 +338,48 @@ main { padding: 30px; min-height: 450px; transition: opacity 0.3s ease, transfor
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 600px) {
     .container { margin: 10px; }
-    header { flex-direction: column; text-align: center; padding: 20px 10px; }
-    .header-info { align-items: center; }
-    header h1 { font-size: 1.6em; }
+    
+    header { 
+        flex-direction: column; 
+        text-align: center; 
+        padding: 20px 10px;
+        align-items: center; /* Fix centering for children */
+    }
+    
+    .header-info { 
+        align-items: center; 
+        text-align: center;
+        width: 100%;
+    }
+    
+    header h1 { 
+        font-size: 1.6em; 
+        width: 100%;
+    }
+    
+    /* Ensure Engineer and Scrum titles center */
+    header h3, .subtitle, .subtitle span {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-icons {
+        justify-content: center;
+        width: 100%;
+    }
+
     .terminal-bar-title { display: none; }
     .date { float: none; display: block; margin-top: 5px; }
     .skills-grid { grid-template-columns: 1fr; }
-    .footer-content { display: flex; flex-direction: column; gap: 10px; }
+    
+    .footer-content { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 10px; 
+        align-items: center;
+    }
 }
 
 .header-icon { width: 24px; height: 24px; filter: invert(1); }
