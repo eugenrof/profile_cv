@@ -103,7 +103,7 @@ const toggle = document.getElementById("theme-toggle");
 function updateThemeUI() {
     if (toggle) {
         const isLight = document.body.classList.contains("light");
-        toggle.textContent = isLight ? "🌙 Dark Theme" : "☀️ Light Theme";
+        toggle.textContent = isLight ? "🌑 Dark Theme" : "☀️ Light Theme";
     }
 }
 
