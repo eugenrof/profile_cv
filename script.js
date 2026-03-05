@@ -40,11 +40,17 @@ function navigateTab(direction) {
     }
 }
 
-// UPDATED: Added window.scrollTo(0,0) on initial load to keep header visible
+/**
+ * UPDATED: openTab logic
+ * 1. Skips hash update for 'about' on initial load to keep URL clean.
+ * 2. Uses history.replaceState to prevent the browser from "jumping" to an anchor.
+ */
 function openTab(id, el, isInitialLoad = false) {
     const main = document.getElementById('terminal-window');
     
-    if (window.location.hash !== `#${id}`) {
+    // Only update hash if it's NOT the initial load of the 'about' page
+    // This keeps your URL as just "yourname.github.io/profile_cv/" instead of adding "#about"
+    if (!isInitialLoad && window.location.hash !== `#${id}`) {
         window.location.hash = id;
     }
 
@@ -70,8 +76,13 @@ function openTab(id, el, isInitialLoad = false) {
 
     if (isInitialLoad) {
         switchDOM();
-        // Force the browser back to the top so the header isn't cut off
+        // FORCE the scroll to the very top so the header is visible
         window.scrollTo(0, 0); 
+        
+        // If we are on 'about', strip the hash from the URL entirely
+        if (id === 'about' && window.location.hash === '#about') {
+            history.replaceState(null, null, window.location.pathname);
+        }
     } else {
         if (main) {
             main.style.opacity = '0';
@@ -204,9 +215,16 @@ if (canvas) {
  */
 function handleRouting(isInitial = false) {
     const hash = window.location.hash.replace('#', '');
+    
+    // Disable automatic browser scroll restoration (prevents jumping back to old scroll positions)
+    if (isInitial && 'scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
     if (hash && tabOrder.includes(hash)) {
         openTab(hash, null, isInitial);
     } else {
+        // Default to 'about' without forcing a #about in the URL
         openTab('about', null, isInitial);
     }
 }
@@ -215,4 +233,9 @@ window.addEventListener('hashchange', () => handleRouting(false));
 
 document.addEventListener('DOMContentLoaded', () => {
     handleRouting(true); 
+    
+    // Safety: ensure we are at the top after everything renders
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 1);
 });
