@@ -40,14 +40,18 @@ function navigateTab(direction) {
     }
 }
 
-function openTab(id, el) {
+// OPTIMIZED: Added isInitialLoad parameter to skip animations on refresh
+function openTab(id, el, isInitialLoad = false) {
     const main = document.getElementById('terminal-window');
-    main.style.opacity = '0';
-    main.style.transform = 'translateY(10px)'; 
     
+    if (window.location.hash !== `#${id}`) {
+        window.location.hash = id;
+    }
+
     resetAccordions(); 
-    
-    setTimeout(() => {
+
+    // Internal function to handle the actual DOM switching
+    const switchDOM = () => {
         document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         
@@ -59,16 +63,27 @@ function openTab(id, el) {
         
         updateNavButtons(tabOrder.indexOf(id));
         
-        main.style.opacity = '1';
-        main.style.transform = 'translateY(0)'; 
-    }, 200);
+        if (!isInitialLoad) {
+            main.style.opacity = '1';
+            main.style.transform = 'translateY(0)';
+        }
+    };
+
+    if (isInitialLoad) {
+        // Instant switch for page refresh (no flicker)
+        switchDOM();
+    } else {
+        // Animated switch for clicks
+        main.style.opacity = '0';
+        main.style.transform = 'translateY(10px)'; 
+        setTimeout(switchDOM, 200);
+    }
 }
 
 /**
  * Back to Top Button Logic
  */
 const bttBtn = document.getElementById("backToTop");
-
 window.addEventListener("scroll", () => {
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         if (bttBtn) bttBtn.style.display = "block";
@@ -98,8 +113,6 @@ document.querySelectorAll(".accordion").forEach(acc => {
  * Theme Toggle with Persistence (LocalStorage)
  */
 const toggle = document.getElementById("theme-toggle");
-
-// Funcție pentru actualizarea UI-ului (textul butonului)
 function updateThemeUI() {
     if (toggle) {
         const isLight = document.body.classList.contains("light");
@@ -107,7 +120,6 @@ function updateThemeUI() {
     }
 }
 
-// Verificăm tema salvată imediat ce se încarcă scriptul
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "light") {
     document.body.classList.add("light");
@@ -119,14 +131,7 @@ updateThemeUI();
 if (toggle) {
     toggle.addEventListener("click", () => {
         const isNowLight = document.body.classList.toggle("light");
-        
-        // Salvăm alegerea utilizatorului
-        if (isNowLight) {
-            localStorage.setItem("theme", "light");
-        } else {
-            localStorage.setItem("theme", "dark");
-        }
-        
+        localStorage.setItem("theme", isNowLight ? "light" : "dark");
         updateThemeUI();
     });
 }
@@ -161,12 +166,10 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-        // Culorile particulelor se adaptează la tema curentă
         ctx.fillStyle = document.body.classList.contains('light') ? 'rgba(58, 134, 255, 0.2)' : 'rgba(76, 201, 240, 0.4)';
         ctx.fill();
     }
 }
-
 const particles = Array.from({length: 80}, () => new Particle());
 
 function drawNetwork() {
@@ -179,7 +182,6 @@ function drawNetwork() {
             let dist = Math.sqrt(dx*dx + dy*dy);
             if(dist < 120){
                 ctx.beginPath();
-                // Culorile liniilor se adaptează la tema curentă
                 ctx.strokeStyle = document.body.classList.contains('light') ? 'rgba(58,134,255,'+ (0.15 - dist/400) +')' : 'rgba(58,134,255,'+ (0.3 - dist/400) +')';
                 ctx.lineWidth = 1;
                 ctx.moveTo(particles[i].x, particles[i].y);
@@ -192,7 +194,20 @@ function drawNetwork() {
 }
 drawNetwork();
 
-// Initialize the navigation buttons state on page load
+/**
+ * Initial Load and Browser History Handling
+ */
+function handleRouting(isInitial = false) {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && tabOrder.includes(hash)) {
+        openTab(hash, null, isInitial);
+    } else {
+        openTab('about', null, isInitial);
+    }
+}
+
+window.addEventListener('hashchange', () => handleRouting(false));
+
 document.addEventListener('DOMContentLoaded', () => {
-    updateNavButtons(0); // Start at 'about' (index 0)
+    handleRouting(true); // Pass true to skip animations on load
 });
