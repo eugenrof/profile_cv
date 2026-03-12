@@ -124,26 +124,19 @@ body::after {
 .terminal-actions { margin-left: auto; display: flex; gap: 10px; }
 
 .terminal-toggle {
-    /* Layout & Alignment */
     display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 36px;
     padding: 0 15px;
     gap: 8px;
-    
-    /* RESET LINK DEFAULTS (Fixed Bold/Black issue) */
     text-decoration: none !important;
     border-bottom: none !important; 
     font-weight: 400 !important;    
-    
-    /* COLORS & FONT */
     background: var(--btn-bg);
     color: var(--text-color) !important; 
     font-family: "JetBrains Mono", monospace !important;
     font-size: 13px;
-    
-    /* BOX STYLES */
     border: 1px solid var(--border-color);
     cursor: pointer;
     border-radius: 4px;
@@ -182,12 +175,34 @@ header h1 { margin: 0; font-size: 2.2em; }
     object-fit: cover; 
     transition: 0.4s;
 }
-.profile-photo:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(58, 134, 255, 0.5); }
+
+/* PROFILE PHOTO HOVER GLOW */
+.profile-photo:hover { 
+    transform: scale(1.1); 
+    box-shadow: 0 0 30px 5px var(--accent-color); 
+    border-color: var(--accent-color);
+}
 
 /* CONTACT ICONS */
-.contact-icons { display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin-top: 5px; }
-.contact-icons img { width: 24px; height: 24px; transition: transform 0.2s ease; }
-.contact-icons img:hover { transform: scale(1.5) rotate(5deg); }
+.contact-icons { 
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 20px; 
+    margin-top: 5px; 
+}
+
+.contact-icons img { 
+    width: 24px; 
+    height: 24px; 
+    transition: transform 0.2s ease, filter 0.2s ease; 
+}
+
+/* UNIFORM HOVER GLOW FOR ALL ICONS & THEMES */
+.contact-icons img:hover { 
+    transform: scale(1.5) rotate(5deg); 
+    filter: drop-shadow(0 0 10px var(--accent-color)) !important;
+}
 
 /* TABS */
 .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; padding: 20px; }
@@ -343,7 +358,7 @@ main { padding: 30px; min-height: 450px; transition: opacity 0.3s ease, transfor
         flex-direction: column; 
         text-align: center; 
         padding: 20px 10px;
-        align-items: center; /* Fix centering for children */
+        align-items: center; 
     }
     
     .header-info { 
@@ -357,7 +372,6 @@ main { padding: 30px; min-height: 450px; transition: opacity 0.3s ease, transfor
         width: 100%;
     }
     
-    /* Ensure Engineer and Scrum titles center */
     header h3, .subtitle, .subtitle span {
         width: 100%;
         text-align: center;
@@ -382,5 +396,13 @@ main { padding: 30px; min-height: 450px; transition: opacity 0.3s ease, transfor
     }
 }
 
-.header-icon { width: 24px; height: 24px; filter: invert(1); }
-body.light .header-icon { filter: invert(0); }
+/* THEME SPECIFIC ICON FILTERS */
+.header-icon { 
+    width: 24px; 
+    height: 24px; 
+    filter: invert(1); 
+}
+
+body.light .header-icon { 
+    filter: invert(0); 
+}
