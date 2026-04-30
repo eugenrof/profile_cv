@@ -1,7 +1,22 @@
 /**
  * Tab and Navigation Configuration
+ * Order updated to: about -> experience -> portfolio -> projects ...[cite: 6]
  */
-const tabOrder = ['about', 'experience', 'projects', 'skills', 'education', 'certifications'];
+const tabOrder = ['about', 'experience', 'portfolio', 'projects', 'skills', 'education', 'certifications'];
+
+/**
+ * Mobile Menu Logic[cite: 5]
+ */
+const mobileToggle = document.getElementById('mobile-menu-toggle');
+const mainNav = document.getElementById('main-nav');
+
+if (mobileToggle && mainNav) {
+    mobileToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        // Optional: Toggle hamburger animation if CSS is added later
+        mobileToggle.classList.toggle('open');
+    });
+}
 
 /**
  * Tab Switching Logic
@@ -17,7 +32,7 @@ function resetAccordions() {
 function updateNavButtons(currentIndex) {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    
+
     if (prevBtn && nextBtn) {
         prevBtn.disabled = currentIndex === 0;
         nextBtn.disabled = currentIndex === tabOrder.length - 1;
@@ -28,46 +43,48 @@ function navigateTab(direction) {
     const activeTabButton = document.querySelector('.tab.active');
     const currentId = activeTabButton ? activeTabButton.getAttribute('data-tab') : 'about';
     let currentIndex = tabOrder.indexOf(currentId);
-    
+
     let nextIndex = currentIndex + direction;
-    
+
     if (nextIndex >= 0 && nextIndex < tabOrder.length) {
         const nextTabId = tabOrder[nextIndex];
         const nextTabButton = document.querySelector(`[data-tab="${nextTabId}"]`);
         openTab(nextTabId, nextTabButton);
-        
+
         document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
     }
 }
 
 /**
- * UPDATED: openTab logic
- * 1. Skips hash update for 'about' on initial load to keep URL clean.
- * 2. Uses history.replaceState to prevent the browser from "jumping" to an anchor.
+ * openTab logic[cite: 6]
  */
 function openTab(id, el, isInitialLoad = false) {
     const main = document.getElementById('terminal-window');
-    
-    // Only update hash if it's NOT the initial load of the 'about' page
-    // This keeps your URL as just "yourname.github.io/profile_cv/" instead of adding "#about"
+
+    // Auto-close mobile menu when a tab is selected[cite: 5]
+    if (mainNav && mainNav.classList.contains('active')) {
+        mainNav.classList.remove('active');
+        if (mobileToggle) mobileToggle.classList.remove('open');
+    }
+
     if (!isInitialLoad && window.location.hash !== `#${id}`) {
         window.location.hash = id;
     }
 
-    resetAccordions(); 
+    resetAccordions();
 
     const switchDOM = () => {
         document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        
+
         const targetSection = document.getElementById(id);
         if (targetSection) targetSection.classList.add('active');
-        
+
         const btn = el || document.querySelector(`[data-tab="${id}"]`);
         if (btn) btn.classList.add('active');
-        
+
         updateNavButtons(tabOrder.indexOf(id));
-        
+
         if (!isInitialLoad && main) {
             main.style.opacity = '1';
             main.style.transform = 'translateY(0)';
@@ -76,17 +93,15 @@ function openTab(id, el, isInitialLoad = false) {
 
     if (isInitialLoad) {
         switchDOM();
-        // FORCE the scroll to the very top so the header is visible
-        window.scrollTo(0, 0); 
-        
-        // If we are on 'about', strip the hash from the URL entirely
+        window.scrollTo(0, 0);
+
         if (id === 'about' && window.location.hash === '#about') {
             history.replaceState(null, null, window.location.pathname);
         }
     } else {
         if (main) {
             main.style.opacity = '0';
-            main.style.transform = 'translateY(10px)'; 
+            main.style.transform = 'translateY(10px)';
             setTimeout(switchDOM, 200);
         } else {
             switchDOM();
@@ -95,7 +110,7 @@ function openTab(id, el, isInitialLoad = false) {
 }
 
 /**
- * Back to Top Button Logic
+ * Back to Top Button Logic[cite: 6]
  */
 const bttBtn = document.getElementById("backToTop");
 window.addEventListener("scroll", () => {
@@ -113,18 +128,7 @@ if (bttBtn) {
 }
 
 /**
- * Accordion Logic
- */
-document.querySelectorAll(".accordion").forEach(acc => {
-    acc.addEventListener("click", () => {
-        acc.classList.toggle("active");
-        const panel = acc.nextElementSibling;
-        if (panel) panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
-    });
-});
-
-/**
- * Theme Toggle with Persistence (LocalStorage)
+ * Theme Toggle with Persistence[cite: 6]
  */
 const toggle = document.getElementById("theme-toggle");
 function updateThemeUI() {
@@ -151,7 +155,7 @@ if (toggle) {
 }
 
 /**
- * Background Network Animation
+ * Background Network Animation[cite: 6]
  */
 const canvas = document.getElementById("background-canvas");
 if (canvas) {
@@ -176,28 +180,28 @@ if (canvas) {
         move() {
             this.x += this.vx;
             this.y += this.vy;
-            if(this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.reset();
+            if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.reset();
         }
         draw() {
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = document.body.classList.contains('light') ? 'rgba(58, 134, 255, 0.2)' : 'rgba(76, 201, 240, 0.4)';
             ctx.fill();
         }
     }
-    const particles = Array.from({length: 80}, () => new Particle());
+    const particles = Array.from({ length: 80 }, () => new Particle());
 
     function drawNetwork() {
-        ctx.clearRect(0,0,width,height);
+        ctx.clearRect(0, 0, width, height);
         particles.forEach(p => { p.move(); p.draw(); });
-        for(let i=0;i<particles.length;i++){
-            for(let j=i+1;j<particles.length;j++){
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
                 let dx = particles[i].x - particles[j].x;
                 let dy = particles[i].y - particles[j].y;
-                let dist = Math.sqrt(dx*dx + dy*dy);
-                if(dist < 120){
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
                     ctx.beginPath();
-                    ctx.strokeStyle = document.body.classList.contains('light') ? 'rgba(58,134,255,'+ (0.15 - dist/400) +')' : 'rgba(58,134,255,'+ (0.3 - dist/400) +')';
+                    ctx.strokeStyle = document.body.classList.contains('light') ? 'rgba(58,134,255,' + (0.15 - dist / 400) + ')' : 'rgba(58,134,255,' + (0.3 - dist / 400) + ')';
                     ctx.lineWidth = 1;
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
@@ -211,12 +215,11 @@ if (canvas) {
 }
 
 /**
- * Initial Load and Browser History Handling
+ * Initial Load and Browser History Handling[cite: 6]
  */
 function handleRouting(isInitial = false) {
     const hash = window.location.hash.replace('#', '');
-    
-    // Disable automatic browser scroll restoration (prevents jumping back to old scroll positions)
+
     if (isInitial && 'scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
@@ -224,7 +227,6 @@ function handleRouting(isInitial = false) {
     if (hash && tabOrder.includes(hash)) {
         openTab(hash, null, isInitial);
     } else {
-        // Default to 'about' without forcing a #about in the URL
         openTab('about', null, isInitial);
     }
 }
@@ -232,9 +234,7 @@ function handleRouting(isInitial = false) {
 window.addEventListener('hashchange', () => handleRouting(false));
 
 document.addEventListener('DOMContentLoaded', () => {
-    handleRouting(true); 
-    
-    // Safety: ensure we are at the top after everything renders
+    handleRouting(true);
     setTimeout(() => {
         window.scrollTo(0, 0);
     }, 1);

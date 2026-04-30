@@ -36,7 +36,8 @@
 
         <header>
             <div class="profile-container">
-                <a href="https://www.linkedin.com/in/eugen-andrei-rof-a165606a/" target="_blank" class="profile-link clean-link">
+                <a href="https://www.linkedin.com/in/eugen-andrei-rof-a165606a/" target="_blank"
+                    class="profile-link clean-link">
                     <img src="images/profile.png" class="profile-photo" alt="Eugen Rof">
                 </a>
             </div>
@@ -46,53 +47,48 @@
                     <span>Senior QA Engineer</span>
                     <span>Certified Scrum Master (PSM II)</span>
                 </p>
-                
+
                 <div class="contact-icons">
-                    <a href="mailto:eugenrof@gmail.com" 
-                       aria-label="Send an email to Eugen" 
-                       title="Gmail" 
-                       class="clean-link">
+                    <a href="mailto:eugenrof@gmail.com" aria-label="Send an email to Eugen" title="Gmail"
+                        class="clean-link">
                         <img src="images/gmail.png" alt="Email">
                     </a>
-                    <a href="https://www.linkedin.com/in/eugen-andrei-rof-a165606a/" 
-                       target="_blank" 
-                       aria-label="Visit Eugen's LinkedIn profile" 
-                       title="LinkedIn" 
-                       class="clean-link">
+                    <a href="https://www.linkedin.com/in/eugen-andrei-rof-a165606a/" target="_blank"
+                        aria-label="Visit Eugen's LinkedIn profile" title="LinkedIn" class="clean-link">
                         <img src="images/linkedin.svg" alt="LinkedIn">
                     </a>
-                    <a href="https://github.com/eugenrof" 
-                       target="_blank" 
-                       aria-label="Visit Eugen's GitHub repository" 
-                       title="GitHub" 
-                       class="clean-link">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="header-icon">
+                    <a href="https://github.com/eugenrof" target="_blank" aria-label="Visit Eugen's GitHub repository"
+                        title="GitHub" class="clean-link">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub"
+                            class="header-icon">
                     </a>
-                    <a href="https://www.credly.com/badges/7af87a6f-3e5f-476c-99d3-396775f50736" 
-                       target="_blank" 
-                       aria-label="View PSM I Certification on Credly" 
-                       title="Scrum.org" 
-                       class="clean-link">
-                        <img src="images/psm.png" alt="Scrum.org">
-                    </a>
-                    <a href="https://www.credly.com/badges/2afb27dd-ee9b-458d-ae82-39fb808621ad" 
-                       target="_blank" 
-                       aria-label="View PSM II Certification on Credly" 
-                       title="Scrum.org" 
-                       class="clean-link">
+                    <a href="https://www.credly.com/badges/2afb27dd-ee9b-458d-ae82-39fb808621ad" target="_blank"
+                        aria-label="View PSM II Certification on Credly" title="Scrum.org" class="clean-link">
                         <img src="images/psm2.png" alt="Scrum.org">
-                    </a>   
+                    </a>
                 </div>
             </div>
         </header>
 
+        <!-- New Mobile Menu Toggle for cleaner UX[cite: 3] -->
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <span>$ ls menu/</span>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
         <nav class="tabs" id="main-nav">
             <button class="tab" data-tab="about" onclick="openTab('about',this)">about</button>
             <button class="tab" data-tab="experience" onclick="openTab('experience',this)">experience</button>
+            <button class="tab" data-tab="portfolio" onclick="openTab('portfolio',this)">portfolio</button>
             <button class="tab" data-tab="projects" onclick="openTab('projects',this)">projects</button>
             <button class="tab" data-tab="skills" onclick="openTab('skills',this)">skills</button>
             <button class="tab" data-tab="education" onclick="openTab('education',this)">education</button>
-            <button class="tab" data-tab="certifications" onclick="openTab('certifications',this)">certifications</button>
+            <button class="tab" data-tab="certifications"
+                onclick="openTab('certifications',this)">certifications</button>
         </nav>
 
         <main id="terminal-window">
@@ -100,16 +96,20 @@
                 <h2 class="command-line">$ cat about.txt</h2>
                 <div class="typing-container">
                     <p class="typewriter" style="--delay: 0s">
-                        > 14+ years of experience delivering software by balancing automated regression with exploratory testing to uncover hidden risks
+                        > 14+ years of experience delivering software by balancing automated regression with exploratory
+                        testing to uncover hidden risks
                     </p>
                     <p class="typewriter" style="--delay: 0.5s">
-                        > Engineering robust automation frameworks with Cypress and Playwright, prioritizing risk-weighted coverage and rapid feedback over script volume
+                        > Engineering robust automation frameworks with Cypress and Playwright, prioritizing
+                        risk-weighted coverage and rapid feedback over script volume
                     </p>
                     <p class="typewriter" style="--delay: 1s">
-                        > Facilitating high-velocity delivery as a Professional Scrum Master by refining requirements and removing technical impediments
+                        > Facilitating high-velocity delivery as a Professional Scrum Master by refining requirements
+                        and removing technical impediments
                     </p>
                     <p class="typewriter" style="--delay: 1.5s">
-                        > Leveraging AI Tools (Amazon Q, GitHub Copilot, Gemini, Claude) to multiply QA productivity via self-healing automation and autonomous edge-case generation
+                        > Leveraging AI Tools (Amazon Q, GitHub Copilot, Gemini, Claude) to multiply QA productivity via
+                        self-healing automation and autonomous edge-case generation
                 </div>
 
                 <h2 class="command-line" style="margin-top: 40px;">$ cat interests.txt</h2>
@@ -132,18 +132,25 @@
                         <li>Orchestrating end-to-end testing for National Geographic
                             Society projects, ensuring high-quality content delivery via <strong>Sanity.io</strong>
                             through a blend of automation and exploratory testing</li>
-                        <li>Developed robust e2e frameworks using <strong>Cypress + TypeScript</strong> and integrated them into <strong>GitLab CI/CD</strong> pipelines</li>
-                        <li>Creating POCs for performance, test management and monitoring tools, such as <strong>TestRail CLI, JMeter, and Grafana k6</strong></li>
-                        <li>Acting as PSM II Certified Scrum Master; leading ceremonies, fostering cross-functional collaboration, and implementing Agile best practices</li>
+                        <li>Developed robust e2e frameworks using <strong>Cypress + TypeScript</strong> and integrated
+                            them into <strong>GitLab CI/CD</strong> pipelines</li>
+                        <li>Creating POCs for performance, test management and monitoring tools, such as
+                            <strong>TestRail CLI, JMeter, and Grafana k6</strong>
+                        </li>
+                        <li>Acting as PSM II Certified Scrum Master; leading ceremonies, fostering cross-functional
+                            collaboration, and implementing Agile best practices</li>
                     </ul>
                 </div>
                 <div class="card">
                     <h3>Senior Test Engineer <span class="date">Nov 2014 – Mar 2022</span></h3>
                     <p class="company">Endava Romania</p>
                     <ul>
-                        <li>Engineered BDD testing suites with <strong>Selenium + Python (Behave)</strong> for digital media platforms</li>
-                        <li>Specialized in embedded and OTT testing for <strong>IPTV, Android TV, and Fire TV</strong> ecosystems</li>
-                        <li>Directed QA lifecycles using <strong>Xray and HPQC</strong>, coordinating defect management within Jira for enterprise-scale projects
+                        <li>Engineered BDD testing suites with <strong>Selenium + Python (Behave)</strong> for digital
+                            media platforms</li>
+                        <li>Specialized in embedded and OTT testing for <strong>IPTV, Android TV, and Fire TV</strong>
+                            ecosystems</li>
+                        <li>Directed QA lifecycles using <strong>Xray and HPQC</strong>, coordinating defect management
+                            within Jira for enterprise-scale projects
                         </li>
                     </ul>
                 </div>
@@ -152,17 +159,63 @@
                     <p class="company">Gama Software</p>
                     <ul>
                         <li>Cross-platform web and mobile testing for diverse tech stacks (ColdFusion, .NET, PHP).</li>
-                        <li>Authored comprehensive test plans, scenarios, and technical documentation for client demos.</li>
-                        <li>Managed end-to-end quality cycles for specialized medical education portals, ensuring data integrity and platform reliability for a network of leading Canadian Medical Universities.</li>
+                        <li>Authored comprehensive test plans, scenarios, and technical documentation for client demos.
+                        </li>
+                        <li>Managed end-to-end quality cycles for specialized medical education portals, ensuring data
+                            integrity and platform reliability for a network of leading Canadian Medical Universities.
+                        </li>
                     </ul>
                 </div>
                 <div class="card">
                     <h3>QA Test Analyst <span class="date">Jan 2012 – Dec 2013</span></h3>
                     <p class="company">Quantic Lab</p>
                     <ul>
-                        <li>Executed functional, compliance, and compatibility testing for diverse titles across web, mobile, and console platforms.</li>
-                        <li>Stepped into the <strong>Lead Tester</strong> role for a specialized PC project, managing a team of junior analysts to ensure stability across varying hardware configurations and OS environments.</li>
+                        <li>Executed functional, compliance, and compatibility testing for diverse titles across web,
+                            mobile, and console platforms.</li>
+                        <li>Stepped into the <strong>Lead Tester</strong> role for a specialized PC project, managing a
+                            team of junior analysts to ensure stability across varying hardware configurations and OS
+                            environments.</li>
                     </ul>
+                </div>
+            </section>
+
+            <section id="portfolio" class="tab-content">
+                <h2 class="command-line">$ ./run_personal_tools.sh</h2>
+                <div class="portfolio-grid">
+
+                    <!-- TC Chef Tool with High-Res Raw Github Link[cite: 3] -->
+                    <div class="portfolio-item">
+                        <a href="https://eugenrof.github.io/tc-chef-tool/" target="_blank"
+                            class="portfolio-link clean-link">
+                            <div class="image-wrapper">
+                                <img src="https://raw.githubusercontent.com/eugenrof/tc-chef-tool/refs/heads/main/images/tc_chef.png"
+                                    alt="TC Chef Tool">
+                                <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>TC Chef</h3>
+                                <p>AI-powered engine converting User Stories into Gemini-driven test cases and Gherkin
+                                    scenarios with Jira/PDF exports.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Sprint Capacity Planner with High-Res Raw Github Link[cite: 3] -->
+                    <div class="portfolio-item">
+                        <a href="https://sprint-cap.netlify.app/" target="_blank" class="portfolio-link clean-link">
+                            <div class="image-wrapper">
+                                <img src="https://raw.githubusercontent.com/eugenrof/sprint-capacity-planner/refs/heads/main/images/share-preview.png"
+                                    alt="Sprint Capacity Planner">
+                                <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Sprint Capacity Planner</h3>
+                                <p>Precision metrics calculator for Scrum Teams to determine velocity, availability, and
+                                    focus factors.</p>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
             </section>
 
@@ -215,36 +268,27 @@
                     <div class="card">
                         <h3>Automation & Coding</h3>
                         <div class="tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Cypress</span>
-                            <span class="tag">Playwright</span>
-                            <span class="tag">PyTest</span>
-                            <span class="tag">Behave</span>
-                            <span class="tag">WebdriverIO</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">React</span>
-                            <span class="tag">Selenium WebDriver</span>
-                            <span class="tag">Appium</span>
+                            <span class="tag">JavaScript</span><span class="tag">TypeScript</span><span
+                                class="tag">Python</span>
+                            <span class="tag">Cypress</span><span class="tag">Playwright</span><span
+                                class="tag">PyTest</span>
+                            <span class="tag">Behave</span><span class="tag">WebdriverIO</span><span
+                                class="tag">Node.js</span>
+                            <span class="tag">React</span><span class="tag">Selenium WebDriver</span><span
+                                class="tag">Appium</span>
                             <span class="tag">SQL</span>
                         </div>
                     </div>
                     <div class="card">
                         <h3>Tracking & Management</h3>
                         <div class="tags">
-                            <span class="tag">Jira</span>
-                            <span class="tag">Bugzilla</span>
-                            <span class="tag">Mantis</span>
-                            <span class="tag">ElemenTool</span>
-                            <span class="tag">Redmine</span>
-                            <span class="tag">TestRail</span>
-                            <span class="tag">Qase</span>
-                            <span class="tag">Xray</span>
-                            <span class="tag">Jira</span>
-                            <span class="tag">Confluence</span>
-                            <span class="tag">Bitbucket</span>
-                            <span class="tag">Test Link</span>
+                            <span class="tag">Jira</span><span class="tag">Bugzilla</span><span
+                                class="tag">Mantis</span>
+                            <span class="tag">ElemenTool</span><span class="tag">Redmine</span><span
+                                class="tag">TestRail</span>
+                            <span class="tag">Qase</span><span class="tag">Xray</span><span class="tag">Jira</span>
+                            <span class="tag">Confluence</span><span class="tag">Bitbucket</span><span class="tag">Test
+                                Link</span>
                             <span class="tag">HPQC</span>
                         </div>
                     </div>
@@ -259,31 +303,25 @@
                     <div class="card">
                         <h3>DevOps & Infrastructure</h3>
                         <div class="tags">
-                            <span class="tag">Git</span>
-                            <span class="tag">GitLab</span>
-                            <span class="tag">GitHub Actions</span>
-                            <span class="tag">Jenkins</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">Linux</span>
+                            <span class="tag">Git</span><span class="tag">GitLab</span><span class="tag">GitHub
+                                Actions</span>
+                            <span class="tag">Jenkins</span><span class="tag">Docker</span><span
+                                class="tag">Linux</span>
                         </div>
                     </div>
                     <div class="card">
                         <h3>UX Design Tools</h3>
                         <div class="tags">
-                            <span class="tag">Figma</span>
-                            <span class="tag">Miro</span>
-                            <span class="tag">Lucidchart</span>
+                            <span class="tag">Figma</span><span class="tag">Miro</span><span
+                                class="tag">Lucidchart</span>
                         </div>
                     </div>
                     <div class="card">
                         <h3>Operating Systems</h3>
                         <div class="tags">
-                            <span class="tag">Windows</span>
-                            <span class="tag">MacOS</span>
-                            <span class="tag">Linux</span>
-                            <span class="tag">Android OS</span>
-                            <span class="tag">iOS/iPadOS</span>
-                            <span class="tag">Raspberry Pi OS</span>
+                            <span class="tag">Windows</span><span class="tag">MacOS</span><span class="tag">Linux</span>
+                            <span class="tag">Android OS</span><span class="tag">iOS/iPadOS</span><span
+                                class="tag">Raspberry Pi OS</span>
                         </div>
                     </div>
                 </div>
@@ -318,7 +356,7 @@
 
             <section id="education" class="tab-content">
                 <h2 class="command-line">$ cat education.txt</h2>
-                
+
                 <div class="education-list">
                     <article class="card">
                         <span class="date">2012–2014</span>
@@ -367,14 +405,14 @@
                     </ul>
                 </article>
             </section>
-            
+
             <div class="cursor-line"><span>$</span> <span class="blink">█</span></div>
-            
-             <div class="section-nav">
+
+            <div class="section-nav">
                 <button id="prevBtn" class="nav-btn" onclick="navigateTab(-1)">← PREV</button>
                 <button id="nextBtn" class="nav-btn" onclick="navigateTab(1)">NEXT →</button>
             </div>
-            
+
         </main>
     </div>
 
@@ -398,4 +436,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
