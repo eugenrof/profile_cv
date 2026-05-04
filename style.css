@@ -522,21 +522,23 @@ main {
 .image-wrapper {
     position: relative;
     width: 100%;
-    height: 250px;
+    /* Remove the fixed 190px height */
+    height: auto;
+    /* This ensures the container always matches the image shape */
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-bottom: 2px solid var(--border-color);
+    background-color: #0f172a;
+    /* Dark filler if image takes time to load */
 }
 
-/* Add this to target the image inside the wrapper */
 .image-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    /* Ensures the image fills the 190px area */
-    object-position: top;
-    /* Forces the alignment to the top so the title is visible */
+    /* 'contain' ensures the whole image fits inside the box */
+    /* 'unset' or 'fill' also works if your images are exactly 16:9 */
+    object-fit: contain;
     display: block;
-    /* Removes any unwanted bottom whitespace */
 }
 
 .portfolio-overlay {
