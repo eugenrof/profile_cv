@@ -47,20 +47,16 @@ body.light {
 }
 
 ::-webkit-scrollbar-track {
-    /* FIX: Uses the theme's background color variable which now updates in Light Mode */
     background: var(--bg-color);
     border-left: 1px solid var(--border-color);
 }
 
-/* Light Theme Specific Track Adjustment */
 body.light ::-webkit-scrollbar-track {
-    /* Uses the lighter f5f7fa shade to blend with the Light Mode gradient */
     background: #f5f7fa;
     border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
-    /* Thumb becomes a subtle grey in light mode, dark blue in dark mode */
     background: var(--btn-bg);
     border: 1px solid var(--border-color);
     border-radius: 5px;
@@ -68,7 +64,6 @@ body.light ::-webkit-scrollbar-track {
 
 body.light ::-webkit-scrollbar-thumb {
     background: #d1d5db;
-    /* A soft grey thumb for Light Mode */
     border: 1px solid #e5e7eb;
 }
 
@@ -285,12 +280,34 @@ header h1 {
     transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.contact-icons img:hover {
+/* Unified Hover for Icons */
+.contact-icons a:hover img {
     transform: scale(1.5) rotate(5deg);
     filter: drop-shadow(0 0 10px var(--accent-color)) !important;
 }
 
-/* MOBILE MENU HAMBURGER[cite: 3] */
+/* Specific logic for GitHub (Simple Icons) */
+.header-icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+body.light .header-icon {
+    filter: invert(0);
+}
+
+/* Ensure inversion + glow work together on GitHub icon */
+.contact-icons a:hover .header-icon {
+    filter: invert(1) drop-shadow(0 0 10px var(--accent-color)) !important;
+}
+
+body.light .contact-icons a:hover .header-icon {
+    filter: invert(0) drop-shadow(0 0 10px var(--accent-color)) !important;
+}
+
+/* MOBILE MENU TOGGLE */
 .mobile-menu-toggle {
     display: none;
     align-items: center;
@@ -470,7 +487,7 @@ main {
     font-weight: bold;
 }
 
-/* SKILLS/PROJECTS GRID */
+/* SKILLS GRID */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -501,7 +518,7 @@ main {
     transform: translateY(-2px);
 }
 
-/* PORTFOLIO GRID[cite: 3] */
+/* PORTFOLIO GRID */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -522,21 +539,16 @@ main {
 .image-wrapper {
     position: relative;
     width: 100%;
-    /* Remove the fixed 190px height */
     height: auto;
-    /* This ensures the container always matches the image shape */
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border-bottom: 2px solid var(--border-color);
     background-color: #0f172a;
-    /* Dark filler if image takes time to load */
 }
 
 .image-wrapper img {
     width: 100%;
     height: 100%;
-    /* 'contain' ensures the whole image fits inside the box */
-    /* 'unset' or 'fill' also works if your images are exactly 16:9 */
     object-fit: contain;
     display: block;
 }
@@ -662,7 +674,7 @@ main {
     text-decoration: underline;
 }
 
-/* NAV BUTTONS */
+/* SECTION NAV */
 .section-nav {
     display: flex;
     justify-content: space-between;
@@ -714,14 +726,6 @@ main {
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px 25px;
-        background: rgba(58, 134, 255, 0.1);
-        cursor: pointer;
-        border-bottom: 1px solid var(--border-color);
-        color: var(--accent-color);
-        font-weight: bold;
     }
 
     .tabs {
@@ -730,13 +734,11 @@ main {
         width: 100%;
         padding: 10px 0;
         gap: 0;
-        /* Dynamic Dark Mode Background */
         background: rgba(10, 25, 47, 0.98);
         backdrop-filter: blur(15px);
         border-bottom: 1px solid var(--border-color);
     }
 
-    /* Light Mode Mobile Menu Fix */
     body.light .tabs {
         background: rgba(245, 247, 250, 0.95);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -754,10 +756,8 @@ main {
         transition: all 0.3s ease;
     }
 
-    /* Fix for the Underlining Effect */
     .tab::after {
         left: 25px;
-        /* Aligns with text start */
         transform: none;
         bottom: 8px;
     }
@@ -765,7 +765,6 @@ main {
     .tab:hover::after,
     .tab.active::after {
         width: 35px;
-        /* Sleek accent line */
     }
 
     .tab:hover {
@@ -820,15 +819,4 @@ main {
         gap: 15px;
         text-align: center;
     }
-}
-
-/* THEME ICONS */
-.header-icon {
-    width: 24px;
-    height: 24px;
-    filter: invert(1);
-}
-
-body.light .header-icon {
-    filter: invert(0);
 }
