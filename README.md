@@ -4,7 +4,7 @@
 
 A high-performance, responsive, terminal-themed Curriculum Vitae engineered with a "code-first" aesthetic and zero external dependencies.
 
-## 🚀 Overview
+## Overview
 
 This portfolio is designed to mirror a modern developer environment. It features a command-line interface (CLI) aesthetic, interactive tabbed navigation, and a procedurally generated network background—all while maintaining the accessibility and speed required for a professional profile.
 
