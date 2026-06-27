@@ -21,17 +21,63 @@
     <canvas id="background-canvas"></canvas>
 
     <div class="container">
-        <div class="terminal-bar">
-            <div class="terminal-controls">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
+        <!-- STICKY HEADER WRAPPER FOR DESKTOP STICKY MENU -->
+        <div class="sticky-header-container">
+            <div class="terminal-bar">
+                <div class="terminal-controls">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <span class="terminal-bar-title">Curriculum Vitae</span>
+                <div class="terminal-actions">
+                    <a href="images/CV_EugenRof.pdf" class="terminal-pdf-btn" target="_blank" rel="noopener noreferrer">🖨️ View PDF</a>
+                    
+                    <!-- MODERN SUN/MOON THEME TOGGLE SWITCH -->
+                    <label class="theme-switch-wrapper" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" aria-label="Toggle Theme" />
+                        <div class="theme-slider">
+                            <!-- Moon Icon (Visible when Dark/Unchecked) -->
+                            <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                            <!-- Sun Icon (Visible when Light/Checked) -->
+                            <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <span class="switch-handle"></span>
+                        </div>
+                    </label>
+                </div>
             </div>
-            <span class="terminal-bar-title">Curriculum Vitae</span>
-            <div class="terminal-actions">
-                <a href="images/CV_EugenRof.pdf" class="terminal-toggle" target="_blank" rel="noopener noreferrer">🖨️ View PDF</a>
-                <button id="theme-toggle" class="terminal-toggle" aria-label="Toggle Theme">☀️ Light Theme</button>
+
+            <!-- MOBILE MENU TOGGLE FLOATING ACTION LAYOUT -->
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span>$ ls menu/</span>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
+
+            <nav class="tabs" id="main-nav">
+                <a href="#about" class="tab active" data-tab="about">about</a>
+                <a href="#experience" class="tab" data-tab="experience">experience</a>
+                <a href="#portfolio" class="tab" data-tab="portfolio">portfolio</a>
+                <a href="#projects" class="tab" data-tab="projects">projects</a>
+                <a href="#skills" class="tab" data-tab="skills">skills</a>
+                <a href="#education" class="tab" data-tab="education">education</a>
+                <a href="#certifications" class="tab" data-tab="certifications">certifications</a>
+            </nav>
         </div>
 
         <header>
@@ -69,27 +115,6 @@
             </div>
         </header>
 
-        <!-- New Mobile Menu Toggle for cleaner UX[cite: 3] -->
-        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
-            <span>$ ls menu/</span>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-
-        <nav class="tabs" id="main-nav">
-            <button class="tab" data-tab="about" onclick="openTab('about',this)">about</button>
-            <button class="tab" data-tab="experience" onclick="openTab('experience',this)">experience</button>
-            <button class="tab" data-tab="portfolio" onclick="openTab('portfolio',this)">portfolio</button>
-            <button class="tab" data-tab="projects" onclick="openTab('projects',this)">projects</button>
-            <button class="tab" data-tab="skills" onclick="openTab('skills',this)">skills</button>
-            <button class="tab" data-tab="education" onclick="openTab('education',this)">education</button>
-            <button class="tab" data-tab="certifications"
-                onclick="openTab('certifications',this)">certifications</button>
-        </nav>
-
         <main id="terminal-window">
             <section id="about" class="tab-content active">
                 <h2 class="command-line">$ cat about.txt</h2>
@@ -105,6 +130,7 @@
                     </p>
                     <p class="typewriter" style="--delay: 1.5s">
                         > Implementing AI-driven QA workflows using Gemini, Claude, and Amazon Q to multiply productivity via autonomous test generation and resilient selector analysis to minimize test flakiness
+                    </p>
                 </div>
 
                 <h2 class="command-line" style="margin-top: 40px;">$ cat interests.txt</h2>
@@ -118,13 +144,15 @@
                 </div>
             </section>
 
-            <section id="experience" class="tab-content">
+            <hr class="section-divider">
+
+            <section id="experience" class="tab-content active">
                 <h2 class="command-line">$ cat experience.log</h2>
                 <div class="card">
                     <h3>Senior QA Engineer | Scrum Master <span class="date">Mar 2022 – Present</span></h3>
                     <p class="company">QCatalyst Romania</p>
                     <ul>
-                        <li>Executed end-to-end testing for National Geographic projects, verifying content accuracy in Sanity.io through a combination of automated scripts and manual exploratory testing</li>
+                        <li>Executed end-to-end testing for National Geographic Society projects, verifying content accuracy in Sanity.io through a combination of automated scripts and manual exploratory testing</li>
                         <li>Built test frameworks using Cypress and TypeScript, and configured them to run within GitLab CI/CD pipelines</li>
                         <li>Creating POCs for performance, test management and monitoring tools, such as
                             <strong>TestRail CLI, JMeter, and Grafana k6</strong></li>
@@ -163,7 +191,9 @@
                 </div>
             </section>
 
-            <section id="portfolio" class="tab-content">
+            <hr class="section-divider">
+
+            <section id="portfolio" class="tab-content active">
                 <h2 class="command-line">$ ./run_personal_tools.sh</h2>
                 <div class="portfolio-grid">
 
@@ -275,7 +305,9 @@
                 </div>
             </section>
 
-            <section id="projects" class="tab-content">
+            <hr class="section-divider">
+
+            <section id="projects" class="tab-content active">
                 <h2 class="command-line">$ ls -R industry_portfolios/</h2>
                 <div class="skills-grid">
                     <div class="card">
@@ -318,13 +350,15 @@
                 </div>
             </section>
 
-            <section id="skills" class="tab-content">
+            <hr class="section-divider">
+
+            <section id="skills" class="tab-content active">
                 <h2 class="command-line">$ ls -R technical_core/</h2>
                 <div class="skills-grid">
                     <div class="card">
                         <h3>Automation & Coding</h3>
                         <div class="tags">
-                            <span class="tag">JavaScript</span><span class="tag">TypeScript</span><span
+                            <span class="tag">JavaScript</span><span class="tag">TypeScript</span><span id="py-tag"
                                 class="tag">Python</span>
                             <span class="tag">Cypress</span><span class="tag">Playwright</span><span
                                 class="tag">PyTest</span>
@@ -410,7 +444,9 @@
                 </div>
             </section>
 
-            <section id="education" class="tab-content">
+            <hr class="section-divider">
+
+            <section id="education" class="tab-content active">
                 <h2 class="command-line">$ cat education.txt</h2>
 
                 <div class="education-list">
@@ -430,7 +466,9 @@
                 </div>
             </section>
 
-            <section id="certifications" class="tab-content">
+            <hr class="section-divider">
+
+            <section id="certifications" class="tab-content active">
                 <h2 class="command-line">$ ls certifications/</h2>
                 <article class="card">
                     <h3>Scrum.org</h3>
@@ -463,12 +501,6 @@
             </section>
 
             <div class="cursor-line"><span>$</span> <span class="blink">█</span></div>
-
-            <div class="section-nav">
-                <button id="prevBtn" class="nav-btn" onclick="navigateTab(-1)">← PREV</button>
-                <button id="nextBtn" class="nav-btn" onclick="navigateTab(1)">NEXT →</button>
-            </div>
-
         </main>
     </div>
 
@@ -494,3 +526,4 @@
 </body>
 
 </html>
+
