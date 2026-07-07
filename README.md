@@ -1,4 +1,4 @@
-# Curriculum Vitae | Eugen Rof
+# Engineering Portfolio | Eugen Rof
 
 [![GitHub Pages](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=github)](https://eugenrof.github.io/profile_cv)
 
