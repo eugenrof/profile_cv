@@ -510,6 +510,41 @@ main {
     margin-bottom: 12px;
 }
 
+/* ------- */
+.industry-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 90px;
+
+    font-size: 4.5rem;
+
+    opacity: 0.6;
+
+    transition: all .25s ease;
+    user-select: none;
+}
+
+.card:hover .industry-icon {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+.domain-desc {
+    text-align: center;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+}
+
+.domain-desc-edu {
+    text-align: left;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+}
+
+/* ---------- */
+
 .domain-desc {
     font-size: 0.95em;
     line-height: 1.4;
