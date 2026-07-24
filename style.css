@@ -651,6 +651,7 @@ main ul li {
     border-bottom: 2px solid var(--border-color);
     background-color: #0f172a;
     flex-shrink: 0;
+    margin-top: 0;
 }
 
 .image-wrapper img {
@@ -707,7 +708,7 @@ main ul li {
     margin: 0 0 5px 0 !important;
     font-size: 0.95em !important;
     color: var(--accent-color) !important;
-    min-height: 2.4em;
+    min-height: auto;
     display: flex;
     align-items: center;
 }
@@ -718,6 +719,7 @@ main ul li {
     color: var(--text-color) !important;
     margin: 0 !important;
     flex-grow: 1;
+    text-align: left;
 }
 
 .lang-list {
@@ -1003,76 +1005,84 @@ button, .tab, .theme-switch-wrapper, .mobile-menu-toggle {
     }
 }
 
-/* --- Multi-Item Focal Carousel System (7 Slides, 3 Visible) --- */
+/* --- Scrollable Portfolio Carousel with Visible Arrows --- */
 .portfolio-carousel {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-    padding: 0 40px;
-    overflow: hidden;
+    padding: 0;
     width: 100%;
     box-sizing: border-box;
 }
 
 .carousel-viewport {
     width: 100%;
-    max-width: 1050px;
-    overflow: hidden;
-    padding: 20px 0;
+    max-width: 1000px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 45px 20px 45px;
     margin: 0 auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--bg-color);
+}
+
+.carousel-viewport::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel-viewport::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+.carousel-viewport::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
 }
 
 .portfolio-grid.carousel-track {
     display: flex;
     flex-wrap: nowrap;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    gap: 20px;
+    gap: 16px;
     margin-top: 0;
     padding: 0;
     width: max-content;
 }
 
 .carousel-slide {
-    flex: 0 0 320px;
-    width: 320px;
+    flex: 0 0 300px;
+    width: 300px;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
-    opacity: 1;
-    transform: scale(0.92);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    pointer-events: auto;
-}
-
-.carousel-slide.active-focal {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.carousel-slide:hover {
-    opacity: 1;
-    transform: scale(1);
 }
 
 .carousel-slide .portfolio-item {
     width: 100%;
     flex: 1 1 auto;
+    max-width: none;
+}
+
+/* Navigation Arrow Buttons */
+.carousel-dots {
+    display: none !important;
 }
 
 .carousel-btn {
     position: absolute;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     color: var(--accent-color);
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    flex-shrink: 0;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1090,63 +1100,54 @@ button, .tab, .theme-switch-wrapper, .mobile-menu-toggle {
 }
 
 .prev-btn {
-    left: 10px;
+    left: 4px;
 }
 
 .next-btn {
-    right: 10px;
-}
-
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 15px;
-    flex-wrap: wrap;
-}
-
-.carousel-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--border-color);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: var(--accent-color);
-    transform: scale(1.25);
-    box-shadow: 0 0 8px var(--accent-color);
-}
-
-@media (max-width: 1024px) {
-    .carousel-viewport {
-        max-width: 100%;
-    }
+    right: 4px;
 }
 
 @media (max-width: 768px) {
     .portfolio-carousel {
-        padding: 0 15px;
-    }
-    
-    .carousel-viewport {
+        padding: 0;
+        width: 100%;
         max-width: 100%;
-        padding: 10px 0;
+        overflow: hidden;
+    }
+
+    .carousel-viewport {
+        padding: 10px 10px 20px 10px;
+        width: 100%;
     }
 
     .carousel-slide {
-        flex: 0 0 280px;
-        width: 280px;
+        flex: 0 0 calc(100vw - 48px);
+        width: calc(100vw - 48px);
+        max-width: 320px;
+    }
+
+    .image-wrapper {
+        height: 160px;
+    }
+
+    .portfolio-info {
+        padding: 12px !important;
+    }
+
+    .portfolio-info h3 {
+        font-size: 0.9em !important;
+        margin-bottom: 6px !important;
+    }
+
+    .portfolio-info .domain-desc {
+        font-size: 0.8em !important;
+        line-height: 1.4 !important;
     }
 
     .carousel-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
     }
     
     .prev-btn {
@@ -1155,13 +1156,6 @@ button, .tab, .theme-switch-wrapper, .mobile-menu-toggle {
 
     .next-btn {
         right: 2px;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-slide {
-        flex: 0 0 calc(100vw - 60px);
-        width: calc(100vw - 60px);
     }
 }
 
