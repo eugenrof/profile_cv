@@ -1040,7 +1040,7 @@ button, .tab, .theme-switch-wrapper, .mobile-menu-toggle {
     display: flex;
     justify-content: center;
     box-sizing: border-box;
-    opacity: 0.75;
+    opacity: 1;
     transform: scale(0.92);
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     pointer-events: auto;
