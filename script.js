@@ -126,6 +126,104 @@ if (toggleInput) {
 }
 
 /**
+ * True Carousel Engine with Dynamic Dots & Step Calculation
+ */
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+const nextButton = document.querySelector('.carousel-btn.next-btn');
+const prevButton = document.querySelector('.carousel-btn.prev-btn');
+const dotsContainer = document.getElementById('carouselDots');
+
+if (track && slides.length > 0) {
+    let currentIndex = 0;
+
+    // Build pagination dots dynamically based on slide counts and responsive visible items
+    function getVisibleCount() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 900) return 2;
+        return 3;
+    }
+
+    function getMaxIndex() {
+        return Math.max(0, slides.length - getVisibleCount());
+    }
+
+    function setupDots() {
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = '';
+        const totalDots = getMaxIndex() + 1;
+        
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('carousel-dot');
+            if (i === currentIndex) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Go to slide group ${i + 1}`);
+            dot.addEventListener('click', () => {
+                currentIndex = i;
+                updateCarousel();
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateDots() {
+        if (!dotsContainer) return;
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function updateCarousel() {
+        const maxIdx = getMaxIndex();
+        if (currentIndex > maxIdx) currentIndex = maxIdx;
+        if (currentIndex < 0) currentIndex = 0;
+
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        const gap = 25; // Matches CSS grid gap
+        const offset = currentIndex * (slideWidth + gap);
+        
+        track.style.transform = `translateX(-${offset}px)`;
+        updateDots();
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < getMaxIndex()) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Loop back to start
+            }
+            updateCarousel();
+        });
+    }
+
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = getMaxIndex(); // Loop to end
+            }
+            updateCarousel();
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        setupDots();
+        updateCarousel();
+    });
+
+    // Initialize
+    setupDots();
+    updateCarousel();
+}
+
+/**
  * Background Network Canvas Animation
  */
 const canvas = document.getElementById("background-canvas");
