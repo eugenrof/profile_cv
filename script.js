@@ -126,102 +126,58 @@ if (toggleInput) {
 }
 
 /**
- * True Carousel Engine with Dynamic Dots & Step Calculation
+ * Smooth Horizontal Scrollable Portfolio System with Dynamic Button States
  */
-const track = document.querySelector('.carousel-track');
-const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-const nextButton = document.querySelector('.carousel-btn.next-btn');
-const prevButton = document.querySelector('.carousel-btn.prev-btn');
-const dotsContainer = document.getElementById('carouselDots');
+document.addEventListener('DOMContentLoaded', () => {
+    const viewport = document.querySelector('.carousel-viewport');
+    const prevBtn = document.querySelector('.carousel-btn.prev-btn');
+    const nextBtn = document.querySelector('.carousel-btn.next-btn');
 
-if (track && slides.length > 0) {
-    let currentIndex = 0;
+    if (viewport && prevBtn && nextBtn) {
+        function updateButtonStates() {
+            const scrollLeft = viewport.scrollLeft;
+            const maxScrollLeft = viewport.scrollWidth - viewport.clientWidth;
 
-    // Build pagination dots dynamically based on slide counts and responsive visible items
-    function getVisibleCount() {
-        if (window.innerWidth <= 600) return 1;
-        if (window.innerWidth <= 900) return 2;
-        return 3;
-    }
+            // Disable prev button if at the far left
+            if (scrollLeft <= 2) {
+                prevBtn.setAttribute('disabled', 'true');
+                prevBtn.style.opacity = '0.3';
+                prevBtn.style.cursor = 'not-allowed';
+            } else {
+                prevBtn.removeAttribute('disabled');
+                prevBtn.style.opacity = '1';
+                prevBtn.style.cursor = 'pointer';
+            }
 
-    function getMaxIndex() {
-        return Math.max(0, slides.length - getVisibleCount());
-    }
-
-    function setupDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = '';
-        const totalDots = getMaxIndex() + 1;
-        
-        for (let i = 0; i < totalDots; i++) {
-            const dot = document.createElement('button');
-            dot.classList.add('carousel-dot');
-            if (i === currentIndex) dot.classList.add('active');
-            dot.setAttribute('aria-label', `Go to slide group ${i + 1}`);
-            dot.addEventListener('click', () => {
-                currentIndex = i;
-                updateCarousel();
-            });
-            dotsContainer.appendChild(dot);
+            // Disable next button if at the far right
+            if (scrollLeft >= maxScrollLeft - 2) {
+                nextBtn.setAttribute('disabled', 'true');
+                nextBtn.style.opacity = '0.3';
+                nextBtn.style.cursor = 'not-allowed';
+            } else {
+                nextBtn.removeAttribute('disabled');
+                nextBtn.style.opacity = '1';
+                nextBtn.style.cursor = 'pointer';
+            }
         }
-    }
 
-    function updateDots() {
-        if (!dotsContainer) return;
-        const dots = dotsContainer.querySelectorAll('.carousel-dot');
-        dots.forEach((dot, index) => {
-            if (index === currentIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
+        // Attach click handlers for smooth scrolling
+        prevBtn.addEventListener('click', () => {
+            viewport.scrollBy({ left: -330, behavior: 'smooth' });
         });
-    }
 
-    function updateCarousel() {
-        const maxIdx = getMaxIndex();
-        if (currentIndex > maxIdx) currentIndex = maxIdx;
-        if (currentIndex < 0) currentIndex = 0;
-
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        const gap = 25; // Matches CSS grid gap
-        const offset = currentIndex * (slideWidth + gap);
-        
-        track.style.transform = `translateX(-${offset}px)`;
-        updateDots();
-    }
-
-    if (nextButton) {
-        nextButton.addEventListener('click', () => {
-            if (currentIndex < getMaxIndex()) {
-                currentIndex++;
-            } else {
-                currentIndex = 0; // Loop back to start
-            }
-            updateCarousel();
+        nextBtn.addEventListener('click', () => {
+            viewport.scrollBy({ left: 330, behavior: 'smooth' });
         });
+
+        // Update states on scroll and window resize
+        viewport.addEventListener('scroll', updateButtonStates);
+        window.addEventListener('resize', updateButtonStates);
+
+        // Initial check on load
+        updateButtonStates();
     }
-
-    if (prevButton) {
-        prevButton.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = getMaxIndex(); // Loop to end
-            }
-            updateCarousel();
-        });
-    }
-
-    window.addEventListener('resize', () => {
-        setupDots();
-        updateCarousel();
-    });
-
-    // Initialize
-    setupDots();
-    updateCarousel();
-}
+});
 
 /**
  * Background Network Canvas Animation
