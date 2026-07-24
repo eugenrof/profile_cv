@@ -194,121 +194,133 @@
             <hr class="section-divider">
 
             <section id="portfolio" class="tab-content active">
-                <h2 class="command-line">$ ./run_personal_tools.sh</h2>
-                <div class="portfolio-grid">
+                <h2 class="command-line">$ ./run_my_tools.sh --carousel</h2>
+                
+                <div class="portfolio-carousel">
+                    <button class="carousel-btn prev-btn" aria-label="Previous Project">&#10094;</button>
+                    
+                    <div class="carousel-viewport">
+                        <div class="portfolio-grid carousel-track">
 
-                    <!-- TC Chef Tool with High-Res Raw Github Link -->
-                    <div class="portfolio-item">
-                        <a href="https://eugenrof.github.io/tc-chef-tool/" target="_blank"
-                            class="portfolio-link clean-link">
-                            <div class="image-wrapper">
-                                <img src="https://raw.githubusercontent.com/eugenrof/tc-chef-tool/refs/heads/main/images/tc_chef.png"
-                                    alt="TC Chef Tool">
-                                <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                            <!-- TC Chef Tool with High-Res Raw Github Link -->
+                            <div class="portfolio-item carousel-slide">
+                                <a href="https://eugenrof.github.io/tc-chef-tool/" target="_blank"
+                                    class="portfolio-link clean-link">
+                                    <div class="image-wrapper">
+                                        <img src="https://raw.githubusercontent.com/eugenrof/tc-chef-tool/refs/heads/main/images/tc_chef.png"
+                                            alt="TC Chef Tool">
+                                        <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                                    </div>
+                                    <div class="portfolio-info">
+                                        <h3>TC Chef | AI Test Case Generator</h3>
+                                        <p>AI-powered engine converting User Stories into CSV test cases and Gherkin scenarios. Includes instant PDF Test Plan generation and Jira-ready exports</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="portfolio-info">
-                                <h3>TC Chef | AI Test Case Generator</h3>
-                                <p>AI-powered engine converting User Stories into CSV test cases and Gherkin scenarios. Includes instant PDF Test Plan generation and Jira-ready exports</p>
+
+                            <!-- AI-Powered WCAG Accessibility Auditor Github Link -->
+                            <div class="portfolio-item carousel-slide">
+                                <a href="https://eugenrof.github.io/wcag-auditor/" target="_blank"
+                                    class="portfolio-link clean-link">
+                                    <div class="image-wrapper">
+                                        <img src="https://raw.githubusercontent.com/eugenrof/wcag-auditor/refs/heads/main/images/social-share.png"
+                                            alt="AI WCAG Accessibility Auditor">
+                                        <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                                    </div>
+                                    <div class="portfolio-info">
+                                        <h3>AI WCAG Accessibility Auditor</h3>
+                                        <p>Automate WCAG 2.2 compliance audits using Gemini AI. Evaluates HTML and UI patterns to provide actionable reports, compliance scores, and remediation fixes</p>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+
+                            <!-- Sitemap Link Validator Tool -->
+                            <div class="portfolio-item carousel-slide">
+                                <a href="https://sitemap-link-validator.vercel.app/" target="_blank"
+                                    class="portfolio-link clean-link">
+                                    <div class="image-wrapper">
+                                        <img src="https://raw.githubusercontent.com/eugenrof/sitemap-validator/refs/heads/main/images/share-preview.png"
+                                            alt="Sitemap Link Validator">
+                                        <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                                    </div>
+                                    <div class="portfolio-info">
+                                        <h3>Sitemap Link Validator</h3>
+                                        <p>A sitemap.xml validator for checking endpoints with automated HTTP status checks, dynamic crawl feedback, and professional PDF reporting</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- Sprint Capacity Planner with High-Res Raw Github Link -->
+                            <div class="portfolio-item carousel-slide">
+                                <a href="https://sprint-cap.netlify.app/" target="_blank" class="portfolio-link clean-link">
+                                    <div class="image-wrapper">
+                                        <img src="https://raw.githubusercontent.com/eugenrof/sprint-capacity-planner/refs/heads/main/images/share-preview.png"
+                                            alt="Sprint Capacity Planner">
+                                        <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                                    </div>
+                                    <div class="portfolio-info">
+                                        <h3>Sprint Capacity Planner</h3>
+                                        <p>Scrum utility for reactive capacity modeling. Calculates real-world team availability and velocity, featuring instant PDF reporting and deep-link sharing</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- AI Selector Healer Tool -->
+                            <div class="portfolio-item carousel-slide">
+                                <a href="https://eugenrof.github.io/ai-selector-healer/" target="_blank"
+                                    class="portfolio-link clean-link">
+                                    <div class="image-wrapper">
+                                        <img src="https://raw.githubusercontent.com/eugenrof/ai-selector-healer/main/images/ai_healer.png"
+                                            alt="AI Selector Healer">
+                                        <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                                    </div>
+                                    <div class="portfolio-info">
+                                        <h3>AI Selector Healer</h3>
+                                        <p>An automation repair utility that analyzes DOM snapshots to suggest alternative Cypress/Playwright selectors, helping to reduce test flakiness and maintenance overhead</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- PlayCynk Migration tool between Cypress and Playwright -->
+                            <div class="portfolio-item carousel-slide">
+                                <a href="https://playcynk.vercel.app/" target="_blank"
+                                    class="portfolio-link clean-link">
+                                    <div class="image-wrapper">
+                                        <img src="https://raw.githubusercontent.com/eugenrof/playcynk-app/refs/heads/main/images/social-share.jpeg"
+                                            alt="PlayCynk Test Parity Engine">
+                                        <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                                    </div>
+                                    <div class="portfolio-info">
+                                        <h3>PlayCynk | Cypress ↔ Playwright Converter</h3>
+                                        <p>Automates framework migration by transforming test suites between Cypress and Playwright using real-time structural analysis and POM generation</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- Interactive CV / Personal Profile -->
+                            <div class="portfolio-item carousel-slide">
+                                <a href="https://eugenrof.github.io/profile_cv/" target="_blank"
+                                    class="portfolio-link clean-link">
+                                    <div class="image-wrapper">
+                                        <img src="https://raw.githubusercontent.com/eugenrof/profile_cv/refs/heads/main/images/social.png"
+                                            alt="Interactive CV Profile">
+                                        <div class="portfolio-overlay"><span>Open App ↗</span></div>
+                                    </div>
+                                    <div class="portfolio-info">
+                                        <h3>Interactive CV</h3>
+                                        <p>A personal website designed to look like a computer terminal. Built using vanilla JavaScript and CSS to display project code, technical skills, and career history through a responsive interface</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <!-- AI-Powered WCAG Accessibility Auditor Github Link -->
-                    <div class="portfolio-item">
-                        <a href="https://eugenrof.github.io/wcag-auditor/" target="_blank"
-                            class="portfolio-link clean-link">
-                            <div class="image-wrapper">
-                                <img src="https://raw.githubusercontent.com/eugenrof/wcag-auditor/refs/heads/main/images/social-share.png"
-                                    alt="AI WCAG Accessibility Auditor">
-                                <div class="portfolio-overlay"><span>Open App ↗</span></div>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>AI WCAG Accessibility Auditor</h3>
-                                <p>Automate WCAG 2.2 compliance audits using Gemini AI. Evaluates HTML and UI patterns to provide actionable reports, compliance scores, and remediation fixes</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Sitemap Link Validator Tool -->
-                    <div class="portfolio-item">
-                        <a href="https://sitemap-link-validator.vercel.app/" target="_blank"
-                            class="portfolio-link clean-link">
-                            <div class="image-wrapper">
-                                <img src="https://raw.githubusercontent.com/eugenrof/sitemap-validator/refs/heads/main/images/share-preview.png"
-                                    alt="Sitemap Link Validator">
-                                <div class="portfolio-overlay"><span>Open App ↗</span></div>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>Sitemap Link Validator</h3>
-                                <p>A sitemap.xml validator for checking endpoints with automated HTTP status checks, dynamic crawl feedback, and professional PDF reporting</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Sprint Capacity Planner with High-Res Raw Github Link -->
-                    <div class="portfolio-item">
-                        <a href="https://sprint-cap.netlify.app/" target="_blank" class="portfolio-link clean-link">
-                            <div class="image-wrapper">
-                                <img src="https://raw.githubusercontent.com/eugenrof/sprint-capacity-planner/refs/heads/main/images/share-preview.png"
-                                    alt="Sprint Capacity Planner">
-                                <div class="portfolio-overlay"><span>Open App ↗</span></div>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>Sprint Capacity Planner</h3>
-                                <p>Scrum utility for reactive capacity modeling. Calculates real-world team availability and velocity, featuring instant PDF reporting and deep-link sharing</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- AI Selector Healer Tool -->
-                    <div class="portfolio-item">
-                        <a href="https://eugenrof.github.io/ai-selector-healer/" target="_blank"
-                            class="portfolio-link clean-link">
-                            <div class="image-wrapper">
-                                <img src="https://raw.githubusercontent.com/eugenrof/ai-selector-healer/main/images/ai_healer.png"
-                                    alt="AI Selector Healer">
-                                <div class="portfolio-overlay"><span>Open App ↗</span></div>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>AI Selector Healer</h3>
-                                <p>An automation repair utility that analyzes DOM snapshots to suggest alternative Cypress/Playwright selectors, helping to reduce test flakiness and maintenance overhead</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- PlayCynk Migration tool between Cypress and Playwright -->
-                    <div class="portfolio-item">
-                        <a href="https://playcynk.vercel.app/" target="_blank"
-                            class="portfolio-link clean-link">
-                            <div class="image-wrapper">
-                                <img src="https://raw.githubusercontent.com/eugenrof/playcynk-app/refs/heads/main/images/social-share.jpeg"
-                                    alt="PlayCynk Test Parity Engine">
-                                <div class="portfolio-overlay"><span>Open App ↗</span></div>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>PlayCynk | Cypress ↔ Playwright Converter</h3>
-                                <p>Automates framework migration by transforming test suites between Cypress and Playwright using real-time structural analysis and POM generation</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Interactive CV / Personal Profile -->
-                    <div class="portfolio-item">
-                        <a href="https://eugenrof.github.io/profile_cv/" target="_blank"
-                            class="portfolio-link clean-link">
-                            <div class="image-wrapper">
-                                <img src="https://raw.githubusercontent.com/eugenrof/profile_cv/refs/heads/main/images/social.png"
-                                    alt="Interactive CV Profile">
-                                <div class="portfolio-overlay"><span>Open App ↗</span></div>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>Interactive CV</h3>
-                                <p>A personal website designed to look like a computer terminal. Built using vanilla JavaScript and CSS to display project code, technical skills, and career history through a responsive interface</p>
-                            </div>
-                        </a>
-                    </div>
-
+                    <button class="carousel-btn next-btn" aria-label="Next Project">&#10095;</button>
                 </div>
+
+                <!-- Carousel Pagination Dots -->
+                <div class="carousel-dots" id="carouselDots" aria-label="Carousel Pagination"></div>
             </section>
 
             <hr class="section-divider">
