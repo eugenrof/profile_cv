@@ -5,7 +5,7 @@ const tabOrder = [
   "about",
   "experience",
   "portfolio",
-  "projects",
+  "industries",
   "skills",
   "education",
   "certifications",
@@ -120,7 +120,7 @@ function updateContactLabels(sectionId) {
       break;
 
     case "portfolio":
-    case "projects":
+    case "industries":
       nameText = "collaborator_name:";
       emailText = "contact_email:";
       messageText = "project_collaboration_idea:";
