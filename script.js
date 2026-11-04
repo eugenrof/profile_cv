@@ -356,7 +356,9 @@
         let best = Infinity;
 
         slides.forEach((slide, i) => {
-          const distance = Math.abs(slide.offsetLeft - viewport.offsetLeft - left);
+          const distance = Math.abs(
+            slide.offsetLeft - viewport.offsetLeft - left,
+          );
 
           if (distance < best) {
             best = distance;
@@ -377,7 +379,8 @@
     }
 
     function step(direction) {
-      const gap = parseFloat(getComputedStyle(slides[0].parentElement).columnGap) || 20;
+      const gap =
+        parseFloat(getComputedStyle(slides[0].parentElement).columnGap) || 20;
       const amount = slides[0].offsetWidth + gap;
 
       viewport.scrollBy({
@@ -480,7 +483,8 @@
       return row;
     }
 
-    const clean = (el) => (el ? el.textContent.replace(/\s+/g, " ").trim() : "");
+    const clean = (el) =>
+      el ? el.textContent.replace(/\s+/g, " ").trim() : "";
 
     /* ---- data pulled from the page ---- */
     const getProjects = () =>
@@ -539,8 +543,8 @@
           ["about", "short summary"],
           ["experience", "career timeline"],
           ["projects", "list my tools"],
-          ["open <n>", "open project number n"],
-          ["skills", "skills and industries"],
+          ["open <n>", "open project name"],
+          ["skills", "list of skills"],
           ["certs", "certifications"],
           ["contact", "how to reach me"],
           ["goto <section>", "scroll to section"],
@@ -564,9 +568,7 @@
 
       experience() {
         $$(".job").forEach((job) => {
-          add([
-            { text: clean($(".job-when", job)), cls: "t-dim" },
-          ]);
+          add([{ text: clean($(".job-when", job)), cls: "t-dim" }]);
           add([
             { text: `  ${clean($("h3", job))}`, cls: "t-key" },
             ` @ ${clean($(".job-company", job))}`,
@@ -589,7 +591,10 @@
         const list = getProjects();
 
         if (!args.length) {
-          add("usage: open <number|name>. Run projects to see the list.", "t-err");
+          add(
+            "usage: open <number|name>. Run projects to see the list.",
+            "t-err",
+          );
           return;
         }
 
@@ -614,7 +619,8 @@
           $$(".skill-card", group).forEach((card) => {
             const items = $$(".chips li", card).map(clean);
             const langs = $$(".langs li", card).map(
-              (li) => `${clean($(".lang-name", li))} (${clean($(".lang-level", li))})`,
+              (li) =>
+                `${clean($(".lang-name", li))} (${clean($(".lang-level", li))})`,
             );
             const text = items.length
               ? items.join(", ")
@@ -640,7 +646,10 @@
 
       certs() {
         $$(".cert li a").forEach((a) =>
-          add([{ text: "✓ ", cls: "t-ok" }, { text: clean(a), href: a.href }]),
+          add([
+            { text: "✓ ", cls: "t-ok" },
+            { text: clean(a), href: a.href },
+          ]),
         );
       },
 
@@ -672,10 +681,7 @@
 
       goto(args) {
         if (!args.length) {
-          add(
-            `usage: goto <${Object.keys(sectionAlias).join("|")}>`,
-            "t-err",
-          );
+          add(`usage: goto <${Object.keys(sectionAlias).join("|")}>`, "t-err");
           return;
         }
 
@@ -688,7 +694,15 @@
 
       ls() {
         add(
-          ["about", "experience", "portfolio", "skills", "education", "certifications", "contact"]
+          [
+            "about",
+            "experience",
+            "portfolio",
+            "skills",
+            "education",
+            "certifications",
+            "contact",
+          ]
             .map((n) => `${n}/`)
             .join("  "),
           "t-key",
@@ -722,7 +736,11 @@
         ];
 
         checks.forEach(([file, note]) =>
-          add([{ text: " PASS ", cls: "t-pass" }, ` ${file}  `, { text: note, cls: "t-dim" }]),
+          add([
+            { text: " PASS ", cls: "t-pass" },
+            ` ${file}  `,
+            { text: note, cls: "t-dim" },
+          ]),
         );
         add("Tests: 5 passed, 0 flaky, 0 skipped", "t-ok");
       },
@@ -732,7 +750,10 @@
           add("Permission granted. Taking you to the contact form...", "t-ok");
           go("contact");
         } else {
-          add("eugen is not in the sudoers file. This incident will be reported.", "t-err");
+          add(
+            "eugen is not in the sudoers file. This incident will be reported.",
+            "t-err",
+          );
         }
       },
     };
@@ -764,7 +785,10 @@
       if (Object.hasOwn(commands, key)) {
         commands[key](args);
       } else {
-        add(`command not found: ${first}. Type help to list commands.`, "t-err");
+        add(
+          `command not found: ${first}. Type help to list commands.`,
+          "t-err",
+        );
       }
     }
 
@@ -805,7 +829,9 @@
         const typed = input.value.trim().toLowerCase();
         if (!typed || typed.includes(" ")) return;
 
-        const matches = Object.keys(commands).filter((c) => c.startsWith(typed));
+        const matches = Object.keys(commands).filter((c) =>
+          c.startsWith(typed),
+        );
         if (matches.length === 1) input.value = `${matches[0]} `;
       } else if (e.key === "l" && e.ctrlKey) {
         e.preventDefault();
@@ -821,7 +847,8 @@
     // On touch devices we skip it so the keyboard doesn't pop up uninvited.
     if (window.matchMedia("(hover: hover)").matches) {
       out.addEventListener("click", () => {
-        if (!String(window.getSelection())) input.focus({ preventScroll: true });
+        if (!String(window.getSelection()))
+          input.focus({ preventScroll: true });
       });
     }
 
