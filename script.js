@@ -558,7 +558,7 @@
 
       whoami() {
         add("Eugen Rof");
-        add("Senior QA Automation Engineer, PSM II Scrum Master");
+        add("Senior QA Automation Engineer, PSM II");
         add("Cluj-Napoca, Romania", "t-dim");
       },
 
