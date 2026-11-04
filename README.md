@@ -17,10 +17,11 @@ In addition to providing a downloadable PDF CV, the portfolio highlights my prof
 ## Features
 
 - Responsive design for desktop, tablet, and mobile devices
-- Terminal-inspired user interface
+- Terminal-inspired user interface with a working interactive terminal (`help`, `projects`, `open 3`, `npm test`, `theme light`, ...)
 - Dark and Light themes with persistent user preference
-- Interactive navigation between portfolio sections
-- Animated Canvas background
+- Sticky navigation with scrollspy and a swipeable section bar on mobile
+- Project grid with direct links to every live tool
+- Animated Canvas network background (pauses when the tab is hidden, respects reduced motion)
 - Downloadable PDF CV
 - Optimized for performance and accessibility
 - Zero external JavaScript or CSS frameworks
